@@ -18,7 +18,13 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\ProdutoRepositoryInterface',
             'App\Repositories\ProdutoRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Contracts\FilialRepositoryInterface',
+            'App\Repositories\FilialRepository'
+        );
     }
+
 
     /**
      * Bootstrap any application services.

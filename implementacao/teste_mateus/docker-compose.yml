@@ -10,7 +10,8 @@ services:
       container_name: test-mateus-mysql
       working_dir: /application
       volumes:
-        - ./database/data:/var/lib/mysql
+        # - ./database/data:/var/lib/mysql
+        - .:/application
       environment:
         - MYSQL_ROOT_PASSWORD=123
         - MYSQL_DATABASE=test_mateus

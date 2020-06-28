@@ -25,3 +25,11 @@ Route::group(['prefix' => 'produtos'], function(){
     Route::get('/buscarProduto/{valor}', "Api\ProdutoController@buscarProduto");
     Route::delete('/excluir/{id}', "Api\ProdutoController@excluir");
 });
+
+Route::group(['prefix' => 'filiais'], function(){
+    Route::get('/', "Api\FilialController@listar");
+    Route::post('/salvar', "Api\FilialController@salvar");
+    Route::put('/salvar', "Api\FilialController@salvar");
+    Route::get('/buscarProduto/{valor}', "Api\FilialController@buscarProduto");
+    Route::delete('/excluir/{id}', "Api\FilialController@excluir");
+});
