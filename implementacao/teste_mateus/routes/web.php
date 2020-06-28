@@ -12,6 +12,5 @@
 */
 
 Route::get('/', function () {
-    dd(\DB::table('filiais')->get());
     return view('welcome');
 });
