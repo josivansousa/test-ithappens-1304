@@ -4,23 +4,23 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\ClienteRepositoryInterface;
+use App\Repositories\Contracts\UsuarioRepositoryInterface;
 
-class ClienteController extends Controller
+class UsuarioController extends Controller
 {
-    protected $cliente;
+    protected $usuario;
 
-    public function __construct(ClienteRepositoryInterface $cliente)
+    public function __construct(UsuarioRepositoryInterface $usuario)
     {
-        $this->cliente = $cliente;
+        $this->usuario = $usuario;
     }
 
     public function listar()
     {
         try {
-            $clientes = $this->cliente->listar();
+            $usuarios = $this->usuario->listar();
 
-            return $clientes;
+            return $usuarios;
         } catch(\Exception $e){
             return $e->getMessage();
         }
@@ -29,9 +29,9 @@ class ClienteController extends Controller
     public function encontrar($id)
     {
         try {
-            $cliente = $this->cliente->encontrar($id);
+            $usuario = $this->usuario->encontrar($id);
 
-            return $cliente;
+            return $usuario;
         } catch(\Exception $e){
             return $e->getMessage();
         }
@@ -40,9 +40,9 @@ class ClienteController extends Controller
     public function salvar(Request $request)
     {
         try{
-            $cliente = $this->cliente->salvar($request->all());
+            $usuario = $this->usuario->salvar($request->all());
 
-            return $cliente;
+            return $usuario;
         } catch(\Exception $e){
             return $e->getMessage();
         }
@@ -51,9 +51,9 @@ class ClienteController extends Controller
     public function atualizar(Request $request, $id)
     {
         try{
-            $cliente = $this->cliente->atualizar($request->all(), $id);
+            $usuario = $this->usuario->atualizar($request->all(), $id);
 
-            return "Cliente atualizado com sucesso!";
+            return "Usuario atualizado com sucesso!";
         } catch(\Exception $e){
             return $e->getMessage();
         }
@@ -61,9 +61,9 @@ class ClienteController extends Controller
 
     public function excluir($id){
         try {
-            $this->cliente->excluir($id);
+            $this->usuario->excluir($id);
 
-            return "Produto excluído com sucesso!";
+            return "Usuario excluído com sucesso!";
         } catch (\Exception $e) {
             return $e->getMessage();
         }

@@ -41,3 +41,11 @@ Route::group(['prefix' => 'clientes'], function(){
     Route::put('/atualizar/{id}', "Api\ClienteController@atualizar");
     Route::delete('/excluir/{id}', "Api\ClienteController@excluir");
 });
+
+Route::group(['prefix' => 'usuarios'], function(){
+    Route::get('/', "Api\UsuarioController@listar");
+    Route::get('/encontrar/{id}', "Api\UsuarioController@encontrar");
+    Route::post('/salvar', "Api\UsuarioController@salvar");
+    Route::put('/atualizar/{id}', "Api\UsuarioController@atualizar");
+    Route::delete('/excluir/{id}', "Api\UsuarioController@excluir");
+});
