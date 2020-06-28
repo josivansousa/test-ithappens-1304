@@ -43,8 +43,18 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\PedidoEstoqueRepositoryInterface',
             'App\Repositories\PedidoEstoqueRepository'
         );
-    }
 
+        $this->app->bind(
+            'App\Repositories\Contracts\ItemPedidoRepositoryInterface',
+            'App\Repositories\ItemPedidoRepository'
+        );
+
+        $this->app->bind(
+            'App\Repositories\Contracts\EstoqueRepositoryInterface',
+            'App\Repositories\EstoqueRepository'
+        );
+    }
+    
 
     /**
      * Bootstrap any application services.

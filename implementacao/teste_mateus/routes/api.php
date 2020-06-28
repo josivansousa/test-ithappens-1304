@@ -67,9 +67,17 @@ Route::group(['prefix' => 'pedidos_estoque'], function(){
 });
 
 Route::group(['prefix' => 'itens_pedido'], function(){
-    Route::get('/', "Api\PedidoEstoqueController@listar");
-    Route::get('/recuperar/{id}', "Api\PedidoEstoqueController@recuperar");
-    Route::post('/salvar', "Api\PedidoEstoqueController@salvar");
-    Route::put('/atualizar/{id}', "Api\PedidoEstoqueController@atualizar");
-    Route::delete('/excluir/{id}', "Api\PedidoEstoqueController@excluir");
+    Route::get('/', "Api\ItemPedidoController@listar");
+    Route::get('/recuperar/{id}', "Api\ItemPedidoController@recuperar");
+    Route::post('/salvar', "Api\ItemPedidoController@salvar");
+    Route::put('/atualizar/{id}', "Api\ItemPedidoController@atualizar");
+    Route::delete('/excluir/{id}', "Api\ItemPedidoController@excluir");
+});
+
+Route::group(['prefix' => 'estoque'], function(){
+    Route::get('/', "Api\EstoqueController@listar");
+    // Route::get('/recuperar/{id}', "Api\EstoqueController@recuperar");
+    Route::post('/salvar', "Api\EstoqueController@atualizarEstoque");
+    // Route::put('/atualizarEstoque/{id}', "Api\EstoqueController@atualizar");
+    // Route::delete('/excluir/{id}', "Api\EstoqueController@excluir");
 });

@@ -9,14 +9,14 @@ class ItemPedido extends Model
     public $table = 'itens_pedido';
     public $fillable = [
         'pedido_estoque_id',
-        'produto_id',
         'qtd',
-        'status_id',
         'valor_unitario',
+        'produto_id',
+        'status_item_id',
     ];
 
     public function pedidosEstoque(){
-        return $this->hasOne("App\Models\PedidoEstoque");
+        return $this->hasOne("App\Models\PedidoEstoque", 'id', 'pedido_estoque_id');
     }
 
     public function produtos(){
@@ -24,6 +24,6 @@ class ItemPedido extends Model
     }
 
     public function status(){
-        return $this->hasOne("App\Models\Status");
+        return $this->hasOne("App\Models\StatusItem");
     }
 }
