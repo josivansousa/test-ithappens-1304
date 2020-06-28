@@ -15,7 +15,7 @@ class ProdutoRepository implements ProdutoRepositoryInterface
 		$this->model = $model;
 	}
 
-	public function get(){
+	public function listar(){
 		$this->model->get();
 	}
 

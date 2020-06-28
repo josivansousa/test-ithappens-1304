@@ -8,11 +8,12 @@ class PedidoEstoque extends Model
 {
     public $table = 'pedidos_estoque';
     public $fillable = [
-        'status_id',
         'user_id',
         'filial_id',
         'cliente_id',
-        'observacao',
+        'forma_pagamento_id',
+        'status_pedido_id',
+        'observacao'
     ];
 
     public function filial(){

@@ -15,10 +15,10 @@ class ProdutoController extends Controller
         $this->produto = $produto;
     }
 
-    public function index()
+    public function listar()
     {
         try {
-            $produtos = $this->produto->get();
+            $produtos = $this->produto->listar();
 
             return $produtos;
         } catch(\Exception $e){

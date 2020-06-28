@@ -4,7 +4,7 @@ namespace App\Repositories\Contracts;
 
 interface ProdutoRepositoryInterface
 {
-    public function get();
+    public function listar();
 
     public function recuperar($id);
     

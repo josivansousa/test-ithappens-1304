@@ -39,6 +39,10 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\FormaPagamentoRepository'
         );
         
+        $this->app->bind(
+            'App\Repositories\Contracts\PedidoEstoqueRepositoryInterface',
+            'App\Repositories\PedidoEstoqueRepository'
+        );
     }
 
 
