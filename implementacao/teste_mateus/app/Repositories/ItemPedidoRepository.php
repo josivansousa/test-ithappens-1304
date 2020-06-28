@@ -38,16 +38,35 @@ class ItemPedidoRepository implements ItemPedidoRepositoryInterface
 		$itemPedido = DB::transaction(function () use ($request, $id) {
 			$itemPedido = $this->model->find($id);
 			if(!$itemPedido){
-				throw new \Exception("Pedido não encontrado!");
+				throw new \Exception("Item não encontrado!");
 			}
 			return $itemPedido->update($request);
 		});
 		return $itemPedido;
 	}
 
-	// public function buscarProduto($valor){
-	// 	return $this->model->where('codigo', $valor)->orWhere('descricao', 'like', "%".$valor."%")->get();
-	// }
+    public function setarStatusProcessado($id){
+		$itemPedido = DB::transaction(function () use ($id) {
+			$itemPedido = $this->model->find($id);
+			if(!$itemPedido){
+				throw new \Exception("Item não encontrado!");
+			}
+			return $itemPedido->update(['status_item_id' => 2]);
+		});
+		return $itemPedido;
+	}
+
+	public function setarStatusCancelado($id){
+		$itemPedido = DB::transaction(function () use ($id) {
+			$itemPedido = $this->model->find($id);
+			if(!$itemPedido){
+				throw new \Exception("Item não encontrado!");
+			}
+			return $itemPedido->update(['status_item_id' => 3]);
+		});
+		
+		return $itemPedido;
+	}
 
 	public function excluir($id){
 		$pedidoEstoque = $this->model->find($id);

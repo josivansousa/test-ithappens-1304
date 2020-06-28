@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\PedidoEstoqueRepositoryInterface;
+use App\Services\PedidoService;
 
 class PedidoEstoqueController extends Controller
 {
     protected $pedidoEstoque;
 
-    public function __construct(PedidoEstoqueRepositoryInterface $pedidoEstoque)
+    public function __construct(PedidoService $pedidoEstoque)
     {
         $this->pedidoEstoque = $pedidoEstoque;
     }
@@ -55,6 +55,17 @@ class PedidoEstoqueController extends Controller
 
             return ['status' => 'sucesso', 'mensagem' => 'Pedido atualizado com sucesso!'];
         } catch(\Exception $e){
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
+        }
+    }
+
+    public function confirmarPedido($id)
+    {
+        try {
+            $pedidoEstoque = $this->pedidoEstoque->confirmarPedido($id);
+
+            return ['status' => 'sucesso', 'mensagem' => 'Pedido processado!'];
+        } catch (\Exception $e) {
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }

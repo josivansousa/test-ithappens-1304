@@ -43,6 +43,20 @@ class ItemPedidoService
         return "Item atualizado com sucesso!";
     }
 
+    public function setarStatusProcessado($id)
+    {
+        $this->itemPedido->setarStatusProcessado($id);
+
+        return "Pedido setado como Processado!";
+    }
+
+    public function setarStatusCancelado($id)
+    {
+        $this->itemPedido->setarStatusCancelado($id);
+
+        return "Pedido setado como Cancelado!";
+    }
+
     public function excluir($id){
         $this->itemPedido->excluir($id);
 

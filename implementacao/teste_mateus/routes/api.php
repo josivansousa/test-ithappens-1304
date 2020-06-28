@@ -58,15 +58,17 @@ Route::group(['prefix' => 'formas_pagamento'], function(){
     Route::delete('/excluir/{id}', "Api\FormaPagamentoController@excluir");
 });
 
-Route::group(['prefix' => 'pedidos_estoque'], function(){
+Route::group(['prefix' => 'pedidos-estoque'], function(){
     Route::get('/', "Api\PedidoEstoqueController@listar");
     Route::get('/recuperar/{id}', "Api\PedidoEstoqueController@recuperar");
     Route::post('/salvar', "Api\PedidoEstoqueController@salvar");
     Route::put('/atualizar/{id}', "Api\PedidoEstoqueController@atualizar");
     Route::delete('/excluir/{id}', "Api\PedidoEstoqueController@excluir");
+
+    Route::put('/confirmar-pedido/{id}', "Api\PedidoEstoqueController@confirmarPedido");
 });
 
-Route::group(['prefix' => 'itens_pedido'], function(){
+Route::group(['prefix' => 'itens-pedido'], function(){
     Route::get('/', "Api\ItemPedidoController@listar");
     Route::get('/recuperar/{id}', "Api\ItemPedidoController@recuperar");
     Route::post('/salvar', "Api\ItemPedidoController@salvar");

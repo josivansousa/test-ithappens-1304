@@ -12,5 +12,9 @@ interface ItemPedidoRepositoryInterface
 
     public function atualizar($request, $id);
 
+    public function setarStatusProcessado($id);
+    
+    public function setarStatusCancelado($id);
+    
     public function excluir($id);
 }
