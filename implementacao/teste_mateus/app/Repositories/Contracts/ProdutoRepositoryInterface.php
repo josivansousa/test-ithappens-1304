@@ -10,6 +10,8 @@ interface ProdutoRepositoryInterface
     
     public function salvar($request);
 
+    public function atualizar($request, $id);
+
     public function buscarProduto($valor);
 
     public function excluir($id);

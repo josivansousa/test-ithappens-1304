@@ -48,6 +48,17 @@ class ProdutoController extends Controller
         }
     }
 
+    public function atualizar(Request $request, $id)
+    {
+        try{
+            $produto = $this->produto->atualizar($request->all(), $id);
+
+            return "Produto atualizado com sucesso!";
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
+    }
+
     public function buscarProduto($valor)
     {
         try{

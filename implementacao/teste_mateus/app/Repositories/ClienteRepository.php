@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Cliente;
 use App\Repositories\Contracts\ClienteRepositoryInterface;
+use DB;
 
 class ClienteRepository implements ClienteRepositoryInterface
 {
@@ -14,4 +15,45 @@ class ClienteRepository implements ClienteRepositoryInterface
 		$this->model = $model;
 	}
 
+	public function listar(){
+		return $this->model->get();
+	}
+
+	public function encontrar($id){
+		$cliente = $this->model->find($id);
+		if(!$cliente){
+			throw new \Exception("Cliente não encontrado!");
+		}
+		return $cliente;
+
+	}
+	
+	public function salvar($request){
+
+		$cliente = DB::transaction(function () use ($request) {
+			return $this->model->create($request);
+		});
+
+		return $cliente;
+	}
+
+	public function atualizar($request, $id){
+		$cliente = DB::transaction(function () use ($request, $id) {
+			return $this->model
+					->where('id', $id)
+					->update($request);
+		});
+
+		return $cliente;
+	}
+
+	public function excluir($id){
+		$cliente = $this->model->find($id);
+		
+		if(!$cliente){
+			throw new \Exception('Cliente não encontrado!');
+		}
+
+		$cliente->delete();
+	}
 }

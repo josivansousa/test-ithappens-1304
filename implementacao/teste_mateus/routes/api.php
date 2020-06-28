@@ -21,15 +21,23 @@ Route::group(['prefix' => 'produtos'], function(){
     Route::get('/', "Api\ProdutoController@index");
     Route::get('/encontrar/{id}', "Api\ProdutoController@encontrar");
     Route::post('/salvar', "Api\ProdutoController@salvar");
-    Route::put('/salvar', "Api\ProdutoController@salvar");
+    Route::put('/atualizar/{id}', "Api\ProdutoController@atualizar");
     Route::get('/buscarProduto/{valor}', "Api\ProdutoController@buscarProduto");
     Route::delete('/excluir/{id}', "Api\ProdutoController@excluir");
 });
 
 Route::group(['prefix' => 'filiais'], function(){
     Route::get('/', "Api\FilialController@listar");
+    Route::get('/encontrar/{id}', "Api\FilialController@encontrar");
     Route::post('/salvar', "Api\FilialController@salvar");
-    Route::put('/salvar', "Api\FilialController@salvar");
-    Route::get('/buscarProduto/{valor}', "Api\FilialController@buscarProduto");
+    Route::put('/atualizar/{id}', "Api\FilialController@atualizar");
     Route::delete('/excluir/{id}', "Api\FilialController@excluir");
+});
+
+Route::group(['prefix' => 'clientes'], function(){
+    Route::get('/', "Api\ClienteController@listar");
+    Route::get('/encontrar/{id}', "Api\ClienteController@encontrar");
+    Route::post('/salvar', "Api\ClienteController@salvar");
+    Route::put('/atualizar/{id}', "Api\ClienteController@atualizar");
+    Route::delete('/excluir/{id}', "Api\ClienteController@excluir");
 });

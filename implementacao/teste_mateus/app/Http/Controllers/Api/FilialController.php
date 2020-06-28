@@ -26,12 +26,34 @@ class FilialController extends Controller
         }
     }
     
+    public function encontrar($id)
+    {
+        try {
+            $filial = $this->filial->encontrar($id);
+
+            return $filial;
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
+    }
+
     public function salvar(Request $request)
     {
         try{
             $filial = $this->filial->salvar($request->all());
 
             return $filial;
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
+    }
+
+    public function atualizar(Request $request, $id)
+    {
+        try{
+            $cliente = $this->filial->atualizar($request->all(), $id);
+
+            return "Filial atualizada com sucesso!";
         } catch(\Exception $e){
             return $e->getMessage();
         }
@@ -45,4 +67,5 @@ class FilialController extends Controller
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-    }}
+    }
+}

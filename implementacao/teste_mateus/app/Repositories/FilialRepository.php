@@ -20,7 +20,12 @@ class FilialRepository implements FilialRepositoryInterface
 	}
 
 	public function encontrar($id){
-		return $this->model->find($id);
+		$filial = $this->model->find($id);
+
+		if(!$filial){
+			throw new \Exception("Filial não encontrada!");
+		}
+		return $filial;
 	}
 	
 	public function salvar($request){
@@ -29,6 +34,15 @@ class FilialRepository implements FilialRepositoryInterface
 			$id = (isset($request['id']) ? $request['id'] : null);
 
 			return $this->model->updateOrCreate(['id' => $id], $request);
+		});
+
+		return $filial;
+	}
+	public function atualizar($request, $id){
+		$filial = DB::transaction(function () use ($request, $id) {
+			return $this->model
+					->where('id', $id)
+					->update($request);
 		});
 
 		return $filial;

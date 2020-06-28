@@ -34,6 +34,16 @@ class ProdutoRepository implements ProdutoRepositoryInterface
 		return $produto;
 	}
 
+	public function atualizar($request, $id){
+		$produto = DB::transaction(function () use ($request, $id) {
+			return $this->model
+					->where('id', $id)
+					->update($request);
+		});
+
+		return $produto;
+	}
+
 	public function buscarProduto($valor){
 		return $this->model->where('codigo', $valor)->orWhere('descricao', 'like', "%".$valor."%")->get();
 	}

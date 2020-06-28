@@ -10,5 +10,7 @@ interface FilialRepositoryInterface
     
     public function salvar($request);
 
+    public function atualizar($request, $id);
+
     public function excluir($id);
 }
