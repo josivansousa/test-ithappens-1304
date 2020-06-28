@@ -19,7 +19,7 @@ class ProdutoRepository implements ProdutoRepositoryInterface
 		$this->model->get();
 	}
 
-	public function encontrar($id){
+	public function recuperar($id){
 		return $this->model->find($id);
 	}
 	

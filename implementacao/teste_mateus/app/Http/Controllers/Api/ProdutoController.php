@@ -26,7 +26,7 @@ class ProdutoController extends Controller
         }
     }
     
-    public function encontrar($id)
+    public function recuperar($id)
     {
         try {
             $produto = $this->produto->encontrar($id);

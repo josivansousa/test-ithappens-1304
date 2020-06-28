@@ -26,7 +26,7 @@ class FilialController extends Controller
         }
     }
     
-    public function encontrar($id)
+    public function recuperar($id)
     {
         try {
             $filial = $this->filial->encontrar($id);

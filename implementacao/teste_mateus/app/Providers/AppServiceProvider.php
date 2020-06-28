@@ -34,6 +34,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\UsuarioRepository'
         );
 
+        $this->app->bind(
+            'App\Repositories\Contracts\FormaPagamentoRepositoryInterface',
+            'App\Repositories\FormaPagamentoRepository'
+        );
+        
     }
 
 

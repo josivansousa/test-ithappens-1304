@@ -6,7 +6,7 @@ interface ClienteRepositoryInterface
 {
     public function listar();
 
-    public function encontrar($id);
+    public function recuperar($id);
     
     public function salvar($request);
 

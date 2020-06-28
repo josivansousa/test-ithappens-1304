@@ -19,7 +19,7 @@ class ClienteRepository implements ClienteRepositoryInterface
 		return $this->model->get();
 	}
 
-	public function encontrar($id){
+	public function recuperar($id){
 		$cliente = $this->model->find($id);
 		if(!$cliente){
 			throw new \Exception("Cliente não encontrado!");

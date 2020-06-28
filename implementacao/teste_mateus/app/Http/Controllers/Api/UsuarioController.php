@@ -20,13 +20,13 @@ class UsuarioController extends Controller
         try {
             $usuarios = $this->usuario->listar();
 
-            return $usuarios;
+            return response()->json($usuarios);
         } catch(\Exception $e){
             return $e->getMessage();
         }
     }
     
-    public function encontrar($id)
+    public function recuperar($id)
     {
         try {
             $usuario = $this->usuario->encontrar($id);

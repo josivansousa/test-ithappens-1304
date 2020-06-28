@@ -19,7 +19,7 @@ class FilialRepository implements FilialRepositoryInterface
 		return $this->model->get();
 	}
 
-	public function encontrar($id){
+	public function recuperar($id){
 		$filial = $this->model->find($id);
 
 		if(!$filial){

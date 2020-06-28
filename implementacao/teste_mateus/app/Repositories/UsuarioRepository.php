@@ -19,7 +19,7 @@ class UsuarioRepository implements UsuarioRepositoryInterface
 		return $this->model->get();
 	}
 
-	public function encontrar($id){
+	public function recuperar($id){
 		$usuario = $this->model->find($id);
 		if(!$usuario){
 			throw new \Exception("Usuario não encontrado!");

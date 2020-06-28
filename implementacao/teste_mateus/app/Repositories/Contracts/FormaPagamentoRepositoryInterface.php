@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Contracts;
 
-interface UsuarioRepositoryInterface
+interface FormaPagamentoRepositoryInterface
 {
     public function listar();
 

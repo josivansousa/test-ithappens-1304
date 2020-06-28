@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'produtos'], function(){
     Route::get('/', "Api\ProdutoController@index");
-    Route::get('/encontrar/{id}', "Api\ProdutoController@encontrar");
+    Route::get('/recuperar/{id}', "Api\ProdutoController@recuperar");
     Route::post('/salvar', "Api\ProdutoController@salvar");
     Route::put('/atualizar/{id}', "Api\ProdutoController@atualizar");
     Route::get('/buscarProduto/{valor}', "Api\ProdutoController@buscarProduto");
@@ -28,7 +28,7 @@ Route::group(['prefix' => 'produtos'], function(){
 
 Route::group(['prefix' => 'filiais'], function(){
     Route::get('/', "Api\FilialController@listar");
-    Route::get('/encontrar/{id}', "Api\FilialController@encontrar");
+    Route::get('/recuperar/{id}', "Api\FilialController@recuperar");
     Route::post('/salvar', "Api\FilialController@salvar");
     Route::put('/atualizar/{id}', "Api\FilialController@atualizar");
     Route::delete('/excluir/{id}', "Api\FilialController@excluir");
@@ -36,7 +36,7 @@ Route::group(['prefix' => 'filiais'], function(){
 
 Route::group(['prefix' => 'clientes'], function(){
     Route::get('/', "Api\ClienteController@listar");
-    Route::get('/encontrar/{id}', "Api\ClienteController@encontrar");
+    Route::get('/recuperar/{id}', "Api\ClienteController@recuperar");
     Route::post('/salvar', "Api\ClienteController@salvar");
     Route::put('/atualizar/{id}', "Api\ClienteController@atualizar");
     Route::delete('/excluir/{id}', "Api\ClienteController@excluir");
@@ -44,8 +44,16 @@ Route::group(['prefix' => 'clientes'], function(){
 
 Route::group(['prefix' => 'usuarios'], function(){
     Route::get('/', "Api\UsuarioController@listar");
-    Route::get('/encontrar/{id}', "Api\UsuarioController@encontrar");
+    Route::get('/recuperar/{id}', "Api\UsuarioController@recuperar");
     Route::post('/salvar', "Api\UsuarioController@salvar");
     Route::put('/atualizar/{id}', "Api\UsuarioController@atualizar");
     Route::delete('/excluir/{id}', "Api\UsuarioController@excluir");
+});
+
+Route::group(['prefix' => 'formas_pagamento'], function(){
+    Route::get('/', "Api\FormaPagamentoController@listar");
+    Route::get('/recuperar/{id}', "Api\FormaPagamentoController@recuperar");
+    Route::post('/salvar', "Api\FormaPagamentoController@salvar");
+    Route::put('/atualizar/{id}', "Api\FormaPagamentoController@atualizar");
+    Route::delete('/excluir/{id}', "Api\FormaPagamentoController@excluir");
 });

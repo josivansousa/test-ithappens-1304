@@ -26,7 +26,7 @@ class ClienteController extends Controller
         }
     }
     
-    public function encontrar($id)
+    public function recuperar($id)
     {
         try {
             $cliente = $this->cliente->encontrar($id);

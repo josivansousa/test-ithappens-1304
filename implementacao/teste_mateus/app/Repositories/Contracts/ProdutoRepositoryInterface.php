@@ -6,7 +6,7 @@ interface ProdutoRepositoryInterface
 {
     public function get();
 
-    public function encontrar($id);
+    public function recuperar($id);
     
     public function salvar($request);
 
