@@ -24,6 +24,7 @@ class ItemPedidoRepository implements ItemPedidoRepositoryInterface
 	}
 	
 	public function salvar($request){
+		$request += ['status_item_id' => 1];
 
 		$itemPedido = DB::transaction(function () use ($request) {
 			return $this->model->create($request);

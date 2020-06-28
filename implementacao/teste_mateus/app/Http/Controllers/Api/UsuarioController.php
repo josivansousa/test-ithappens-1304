@@ -20,9 +20,9 @@ class UsuarioController extends Controller
         try {
             $usuarios = $this->usuario->listar();
 
-            return response()->json($usuarios);
+            return ['status' => 'sucesso', 'usuario' => $usuarios];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -31,9 +31,9 @@ class UsuarioController extends Controller
         try {
             $usuario = $this->usuario->encontrar($id);
 
-            return $usuario;
+            return ['status' => 'sucesso', 'usuario' => $usuario];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -42,9 +42,9 @@ class UsuarioController extends Controller
         try{
             $usuario = $this->usuario->salvar($request->all());
 
-            return $usuario;
+            return ['status' => 'sucesso', 'usuario' => $usuario];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -53,9 +53,9 @@ class UsuarioController extends Controller
         try{
             $usuario = $this->usuario->atualizar($request->all(), $id);
 
-            return "Usuario atualizado com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Usuario atualizado com sucesso!'];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -63,9 +63,9 @@ class UsuarioController extends Controller
         try {
             $this->usuario->excluir($id);
 
-            return "Usuario excluído com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Usuario excluído com sucesso!'];
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 }

@@ -20,9 +20,9 @@ class ClienteController extends Controller
         try {
             $clientes = $this->cliente->listar();
 
-            return $clientes;
+            return ['status' => 'sucesso', 'clientes' => $clientes];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -31,9 +31,9 @@ class ClienteController extends Controller
         try {
             $cliente = $this->cliente->encontrar($id);
 
-            return $cliente;
+            return ['status' => 'sucesso', 'cliente' => $cliente];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -42,9 +42,9 @@ class ClienteController extends Controller
         try{
             $cliente = $this->cliente->salvar($request->all());
 
-            return $cliente;
+            return ['status' => 'sucesso', 'cliente' => $cliente];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -53,9 +53,9 @@ class ClienteController extends Controller
         try{
             $cliente = $this->cliente->atualizar($request->all(), $id);
 
-            return "Cliente atualizado com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Cliente atualizado com sucesso!'];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -63,9 +63,9 @@ class ClienteController extends Controller
         try {
             $this->cliente->excluir($id);
 
-            return "Produto excluído com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Cliente excluído com sucesso!'];
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 }

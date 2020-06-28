@@ -20,9 +20,9 @@ class ProdutoController extends Controller
         try {
             $produtos = $this->produto->listar();
 
-            return $produtos;
+            return ['status' => 'sucesso', 'produtos' => $produtos];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -31,9 +31,9 @@ class ProdutoController extends Controller
         try {
             $produto = $this->produto->encontrar($id);
 
-            return $produto;
+            return ['status' => 'sucesso', 'produtos' => $produtos];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }    
 
@@ -42,9 +42,9 @@ class ProdutoController extends Controller
         try{
             $produto = $this->produto->salvar($request->all());
 
-            return $produto;
+            return ['status' => 'sucesso', 'produtos' => $produtos];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -53,9 +53,9 @@ class ProdutoController extends Controller
         try{
             $produto = $this->produto->atualizar($request->all(), $id);
 
-            return "Produto atualizado com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Produto atualizado com sucesso!'];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -64,9 +64,9 @@ class ProdutoController extends Controller
         try{
             $produtos = $this->produto->buscarProduto($valor);
 
-            return $produtos;
+            return ['status' => 'sucesso', 'produtos' => $produtos];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -74,9 +74,9 @@ class ProdutoController extends Controller
         try {
             $this->produto->excluir($id);
 
-            return "Produto excluído com sucesso!";
+            return ['status' => 'sucesso', 'produtos' => 'Produto excluído com sucesso!'];
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 }

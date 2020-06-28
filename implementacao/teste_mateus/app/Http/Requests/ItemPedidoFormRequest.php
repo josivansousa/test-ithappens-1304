@@ -36,30 +36,6 @@ class ItemPedidoFormRequest extends FormRequest
             ]
         ];
 
-        // if ($this->status_item_id == 1) {
-        //     $qtd = $this['qtd'];
-        //     $produto_id = $this['produto_id'];
-        //     $qtd_total = (\DB::table('pedidos_estoque') 
-        //                     ->select('estoques.qtd_total')
-        //                     ->join('estoques', 'estoques.filial_id', '=', 'pedidos_estoque.filial_id')
-        //                     ->where([
-        //                         'pedidos_estoque.id' => $this['pedido_estoque_id'],
-        //                         'estoques.produto_id' => $this['produto_id']
-        //                     ])->first())->qtd_total;
-        //     ////////////////////////
-        //     $rules += [ 
-        //             'qtd' => [
-        //                 'required',
-        //                 'numeric',
-        //                 'min:1',
-        //                 'max:'.$qtd_total
-        //             ]
-        //     ];
-        // }else{
-        //     $rules += [
-        //         'qtd'   => 'required|numeric|min:1'
-        //     ];
-        // }
         return $rules;
     }
 
@@ -70,7 +46,6 @@ class ItemPedidoFormRequest extends FormRequest
             'pedido_estoque_id.exists'     => 'Pedido não encontrado!',
             'qtd.required'                 => 'Informe a quantidade!',
             'qtd.numeric'                  => 'Digite um valor maior que zero!',
-            // 'qtd.max'                      => 'Produto sem estoque!',
             'valor_unitario.required'      => 'Digite o valor do produto!',
             'valor_unitario.numeric'       => 'Digite o valor!',
             'produto_id.required'          => 'Informe o pedido!',

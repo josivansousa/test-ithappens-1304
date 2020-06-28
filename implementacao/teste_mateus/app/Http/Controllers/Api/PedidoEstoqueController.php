@@ -20,9 +20,9 @@ class PedidoEstoqueController extends Controller
         try {
             $pedidosEstoque = $this->pedidoEstoque->listar();
 
-            return $pedidosEstoque;
+            return ['status' => 'sucesso', 'pedidosEstoque' => $pedidosEstoque];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -31,9 +31,9 @@ class PedidoEstoqueController extends Controller
         try {
             $pedidoEstoque = $this->pedidoEstoque->encontrar($id);
 
-            return $pedidoEstoque;
+            return ['status' => 'sucesso', 'pedidoEstoque' => $pedidoEstoque];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }    
 
@@ -42,9 +42,9 @@ class PedidoEstoqueController extends Controller
         try{
             $pedidoEstoque = $this->pedidoEstoque->salvar($request->all());
 
-            return $pedidoEstoque;
+            return ['status' => 'sucesso', 'pedidoEstoque' => $pedidoEstoque];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -53,30 +53,19 @@ class PedidoEstoqueController extends Controller
         try{
             $pedidoEstoque = $this->pedidoEstoque->atualizar($request->all(), $id);
 
-            return "Pedido atualizado com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Pedido atualizado com sucesso!'];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
-
-    // public function buscarProduto($valor)
-    // {
-    //     try{
-    //         $produtos = $this->produto->buscarProduto($valor);
-
-    //         return $produtos;
-    //     } catch(\Exception $e){
-    //         return $e->getMessage();
-    //     }
-    // }
 
     public function excluir($id){
         try {
             $this->pedidoEstoque->excluir($id);
 
-            return "Pedido excluído com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Pedido excluído com sucesso!'];
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 }

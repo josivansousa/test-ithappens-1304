@@ -22,7 +22,7 @@ Route::group(['prefix' => 'produtos'], function(){
     Route::get('/recuperar/{id}', "Api\ProdutoController@recuperar");
     Route::post('/salvar', "Api\ProdutoController@salvar");
     Route::put('/atualizar/{id}', "Api\ProdutoController@atualizar");
-    Route::get('/buscarProduto/{valor}', "Api\ProdutoController@buscarProduto");
+    Route::get('/buscar-produto/{valor}', "Api\ProdutoController@buscarProduto");
     Route::delete('/excluir/{id}', "Api\ProdutoController@excluir");
 });
 

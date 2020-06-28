@@ -20,9 +20,9 @@ class FormaPagamentoController extends Controller
         try {
             $formasPagamentos = $this->formaPagamento->listar();
 
-            return $formasPagamentos;
+            return ['status' => 'sucesso', 'formasPagamentos' => $formasPagamentos];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -31,9 +31,9 @@ class FormaPagamentoController extends Controller
         try {
             $formaPagamento = $this->formaPagamento->recuperar($id);
 
-            return $formaPagamento;
+            return ['status' => 'sucesso', 'formaPagamento' => $formaPagamento];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -42,9 +42,9 @@ class FormaPagamentoController extends Controller
         try{
             $formaPagamento = $this->formaPagamento->salvar($request->all());
 
-            return $formaPagamento;
+            return ['status' => 'sucesso', 'formaPagamento' => $formaPagamento];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -53,9 +53,9 @@ class FormaPagamentoController extends Controller
         try{
             $formaPagamento = $this->formaPagamento->atualizar($request->all(), $id);
 
-            return "Forma de pagamento atualizado com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Forma de pagamento atualizado com sucesso!'];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -63,9 +63,9 @@ class FormaPagamentoController extends Controller
         try {
             $this->formaPagamento->excluir($id);
 
-            return "Forma de pagamento excluído com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Forma de pagamento excluído com sucesso!'];
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 }

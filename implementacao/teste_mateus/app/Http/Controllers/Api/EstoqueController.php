@@ -21,9 +21,9 @@ class EstoqueController extends Controller
         try {
             $estoques = $this->estoque->listar();
 
-            return $estoques;
+            return ['status' => 'sucesso', 'estoques' => $estoques];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -32,9 +32,9 @@ class EstoqueController extends Controller
         try {
             $estoque = $this->estoque->encontrar($id);
 
-            return $estoque;
+            return ['status' => 'sucesso', 'estoque' => $estoque];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -54,9 +54,9 @@ class EstoqueController extends Controller
         try{
             $estoque = $this->estoque->atualizar($request->all(), $id);
 
-            return "Filial atualizada com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => "Estoque atualizada com sucesso!"];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -64,9 +64,9 @@ class EstoqueController extends Controller
         try {
             $this->estoque->excluir($id);
 
-            return "Estoque excluído com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => "Estoque excluído com sucesso!"];
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 }

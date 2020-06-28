@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\ItemPedidoRepositoryInterface;
+use App\Services\ItemPedidoService;
 use App\Http\Requests\ItemPedidoFormRequest;
 
 class ItemPedidoController extends Controller
 {
     protected $itemPedido;
 
-    public function __construct(ItemPedidoRepositoryInterface $itemPedido)
+    public function __construct(ItemPedidoService $itemPedido)
     {
         $this->itemPedido = $itemPedido;
     }
@@ -21,9 +21,9 @@ class ItemPedidoController extends Controller
         try {
             $itensPedido = $this->itemPedido->listar();
 
-            return $itensPedido;
+            return ['status' => 'sucesso', 'itensPedido' => $itensPedido];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
     
@@ -32,21 +32,20 @@ class ItemPedidoController extends Controller
         try {
             $itemPedido = $this->itemPedido->encontrar($id);
 
-            return $itemPedido;
+            return ['status' => 'sucesso', 'itemPedido' => $itemPedido];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }    
 
     public function salvar(ItemPedidoFormRequest $request)
     {
-        dd($request->all());
         try{
             $itemPedido = $this->itemPedido->salvar($request->all());
 
-            return $itemPedido;
+            return ['status' => 'sucesso', 'itemPedido' => $itemPedido];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -55,9 +54,9 @@ class ItemPedidoController extends Controller
         try{
             $itemPedido = $this->itemPedido->atualizar($request->all(), $id);
 
-            return "Item atualizado com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Item atualizado com sucesso!'];
         } catch(\Exception $e){
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 
@@ -65,9 +64,9 @@ class ItemPedidoController extends Controller
         try {
             $this->itemPedido->excluir($id);
 
-            return "Item excluído com sucesso!";
+            return ['status' => 'sucesso', 'mensagem' => 'Item excluído com sucesso!'];
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
 }
