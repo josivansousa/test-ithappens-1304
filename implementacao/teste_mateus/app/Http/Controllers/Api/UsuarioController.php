@@ -31,7 +31,7 @@ class UsuarioController extends Controller
     public function recuperar($id)
     {
         try {
-            $usuario = $this->usuario->encontrar($id);
+            $usuario = $this->usuario->recuperar($id);
 
             return ['status' => 'sucesso', 'usuario' => $usuario];
         } catch(\Exception $e){

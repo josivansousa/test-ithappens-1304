@@ -34,7 +34,7 @@ Route::group(['prefix' => 'formas-pagamento'], function(){
 });
 
 Route::group(['prefix' => 'usuarios'], function(){
-    Route::get('/', 'FormaPagamentoController@listar');
-    Route::get('/cadastrar', 'FormaPagamentoController@cadastro');
-    Route::get('/atualizar/{id}', 'FormaPagamentoController@atualizar');    
+    Route::get('/', 'UsuarioController@listar');
+    Route::get('/cadastrar', 'UsuarioController@cadastro');
+    Route::get('/atualizar/{id}', 'UsuarioController@atualizar');    
 });

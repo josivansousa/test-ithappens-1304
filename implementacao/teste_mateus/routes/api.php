@@ -33,6 +33,7 @@ Route::group(['prefix' => 'produtos'], function(){
 
 Route::group(['prefix' => 'filiais'], function(){
     Route::get('/', "Api\FilialController@listar");
+    Route::get('/listar-todos', "Api\FilialController@listarTodos");
     Route::get('/recuperar/{id}', "Api\FilialController@recuperar");
     Route::post('/salvar', "Api\FilialController@salvar");
     Route::put('/atualizar/{id}', "Api\FilialController@atualizar");

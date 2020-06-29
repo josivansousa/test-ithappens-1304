@@ -31,6 +31,10 @@ import FormEditFilial from './components/filiais/FormEditFilial.vue'
 import FormFormaPagamento from './components/formas_pagamento/FormFormaPagamento.vue'
 import FormEditFormaPagamento from './components/formas_pagamento/FormEditFormaPagamento.vue'
 
+//Componentes de usuarios
+import FormUsuario from './components/usuarios/FormUsuario.vue'
+import FormEditUsuario from './components/usuarios/FormEditUsuario.vue'
+
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');
 
 window.onload = function () {
@@ -43,6 +47,8 @@ window.onload = function () {
             FormEditFilial,
             FormFormaPagamento,
             FormEditFormaPagamento,
+            FormUsuario,
+            FormEditUsuario,
         },
     });
 }

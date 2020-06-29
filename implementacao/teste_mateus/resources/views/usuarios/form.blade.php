@@ -2,6 +2,8 @@
 
 @section("conteudo")
 
-<h1 class="h2">Cadastro de usuários</h1>
+<h1 class="h2">Cadastro de usuario</h1>
+
+<form-usuario></form-usuario>
 
 @endsection

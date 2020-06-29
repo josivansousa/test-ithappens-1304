@@ -28,6 +28,21 @@ class FilialController extends Controller
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
     }
+
+    public function listarTodos()
+    {
+        try {
+            $filiais = $this->filial->listarTodos();
+
+            return response()->json([
+                'status' => 'sucesso', 'filiais' => $filiais
+            ], 200);
+        } catch(\Exception $e){
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
+        }
+    }
+
+    
     
     public function recuperar($id)
     {
