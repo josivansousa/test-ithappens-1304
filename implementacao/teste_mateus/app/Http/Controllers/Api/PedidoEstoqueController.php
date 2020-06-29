@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PedidoFormRequest;
 use App\Services\PedidoService;
 
 class PedidoEstoqueController extends Controller
@@ -37,7 +38,7 @@ class PedidoEstoqueController extends Controller
         }
     }    
 
-    public function salvar(Request $request)
+    public function salvar(PedidoFormRequest $request)
     {
         try{
             $pedidoEstoque = $this->pedidoEstoque->salvar($request->all());
@@ -48,7 +49,7 @@ class PedidoEstoqueController extends Controller
         }
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(PedidoFormRequest $request, $id)
     {
         try{
             $pedidoEstoque = $this->pedidoEstoque->atualizar($request->all(), $id);

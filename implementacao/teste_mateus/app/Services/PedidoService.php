@@ -32,16 +32,16 @@ class PedidoService
         return $pedidoEstoque;
     }    
 
-    public function salvar(ItemPedidoFormRequest $request)
+    public function salvar($request)
     {
-        $pedidoEstoque = $this->pedidoEstoque->salvar($request->all());
+        $pedidoEstoque = $this->pedidoEstoque->salvar($request);
 
         return $pedidoEstoque;
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar($request, $id)
     {
-        $pedidoEstoque = $this->pedidoEstoque->atualizar($request->all(), $id);
+        $pedidoEstoque = $this->pedidoEstoque->atualizar($request, $id);
 
         return "Item atualizado com sucesso!";
     }
@@ -69,7 +69,6 @@ class PedidoService
     public function confirmarPedido($id)
     {
         $pedidoEstoque = $this->pedidoEstoque->recuperar($id);
-
         if (!$pedidoEstoque && count($pedidoEstoque->itensPedido) == 0) {
             throw new \Exception("Não há nenhum pedido selecionado!");
         }

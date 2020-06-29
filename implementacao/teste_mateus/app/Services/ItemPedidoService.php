@@ -32,16 +32,16 @@ class ItemPedidoService
         return $itemPedido;
     }    
 
-    public function salvar(ItemPedidoFormRequest $request)
+    public function salvar($request)
     {
-        $itemPedido = $this->itemPedido->salvar($request->all());
+        $itemPedido = $this->itemPedido->salvar($request);
 
         return $itemPedido;
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar($request, $id)
     {
-        $itemPedido = $this->itemPedido->atualizar($request->all(), $id);
+        $itemPedido = $this->itemPedido->atualizar($request, $id);
 
         return "Item atualizado com sucesso!";
     }
@@ -64,8 +64,8 @@ class ItemPedidoService
     {
         $itemPedido = $this->itemPedido->recuperar($id);
 
-        if ($itemPedido->status_item_id != 2) {
-            throw new \Exception("Item não pode ser retirado!");
+        if (!$itemPedido || $itemPedido->status_item_id != 2) {
+            throw new \Exception("Item não encontrado ou não pode ser retirado!");
         }
 
         $request = [
