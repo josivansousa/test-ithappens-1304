@@ -88,7 +88,7 @@
                     }
                 }])
             },
-            recuperarProduto : function(){              
+            recuperarUsuario : function(){              
                 self = this;
                 this.$http.get(urlBase + '/usuarios').then((response) => {
                     self.usuarios = response.body.usuarios;
@@ -102,7 +102,7 @@
             }
         },
         created () {
-            this.recuperarProduto();
+            this.recuperarUsuario();
         },
     };
 </script>

@@ -24,6 +24,6 @@ class ItemPedido extends Model
     }
 
     public function status(){
-        return $this->hasOne("App\Models\StatusItem");
+        return $this->hasOne("App\Models\StatusItem", 'id', 'status_item_id');
     }
 }

@@ -36,9 +36,20 @@ class ItemPedidoController extends Controller
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
-    }    
+    }  
+    
+    public function recuperarPedido($pedidoEstoqueId)
+    {
+        try {
+            $itensPedido = $this->itemPedido->recuperarPedido($pedidoEstoqueId);
 
-    public function salvar(ItemPedidoFormRequest $request)
+            return ['status' => 'sucesso', 'itensPedido' => $itensPedido];
+        } catch(\Exception $e){
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
+        }
+    }
+
+    public function salvar(Request $request)
     {
         try{
             $itemPedido = $this->itemPedido->salvar($request->all());

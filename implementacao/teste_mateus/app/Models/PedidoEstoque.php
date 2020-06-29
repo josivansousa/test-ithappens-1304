@@ -33,7 +33,7 @@ class PedidoEstoque extends Model
     }
 
     public function itensPedido(){
-        return $this->hasMany("App\Models\ItemPedido");
+        return $this->hasMany("App\Models\ItemPedido", 'pedido_estoque_id', 'id');
     }
 
     public function formaPagamento(){

@@ -34,6 +34,7 @@
     "vue-chartjs": "^3.3.1",
     "vue-resource": "^1.5.0",
     "vue-select": "^2.4.0",
+    "vue-suggestion": "^1.1.0",
     "vue-the-mask": "^0.11.1",
     "vue-wysiwyg": "^1.7.2",
     "vue2-slot-calendar": "^2.1.4",

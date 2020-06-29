@@ -13,4 +13,9 @@ class StatusItemRepository implements StatusItemRepositoryInterface
 	{
 		$this->model = $model;
 	}
+
+	public function listar(){
+		return $this->model->get();
+	}
+
 }

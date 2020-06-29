@@ -7,7 +7,9 @@ interface ItemPedidoRepositoryInterface
     public function listar();
 
     public function recuperar($id);
-    
+
+    public function recuperarPedido($pedidoEstoqueId);
+
     public function salvar($request);
 
     public function atualizar($request, $id);

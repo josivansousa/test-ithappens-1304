@@ -18,6 +18,7 @@ class PedidoEstoqueRepository implements PedidoEstoqueRepositoryInterface
 	public function listar(){
 		return $this->model
 			->with('itensPedido.produtos.estoque', 'cliente', 'usuario', 'filial','status', 'formaPagamento')
+			->orderBy('created_at')
 			->paginate(10);
 	}
 
@@ -28,8 +29,6 @@ class PedidoEstoqueRepository implements PedidoEstoqueRepositoryInterface
 	public function salvar($request){
 
 		$pedidoEstoque = DB::transaction(function () use ($request) {
-			// $id = (isset($request['id']) ? $request['id'] : null);
-
 			return $this->model->create($request);
 		});
 

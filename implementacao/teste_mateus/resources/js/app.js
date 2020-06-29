@@ -45,7 +45,7 @@ import FormEditProduto from './components/produtos/FormEditProduto.vue'
 import ListaProduto from './components/produtos/ListaProduto.vue'
 
 //Componentes de pedidos
-// import FormProduto from './components/produtos/FormProduto.vue'
+import FormPedido from './components/pedidos/FormPedido.vue'
 // import FormEditProduto from './components/produtos/FormEditProduto.vue'
 import ListaPedido from './components/pedidos/ListaPedido.vue'
 
@@ -71,6 +71,7 @@ window.onload = function () {
             FormProduto,
             FormEditProduto,
             ListaProduto,
+            FormPedido,
             ListaPedido
         },
     });

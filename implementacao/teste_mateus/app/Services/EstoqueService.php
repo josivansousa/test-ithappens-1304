@@ -29,9 +29,9 @@ class EstoqueService
         }
     }
     
-    public function recuperar($id)
+    public function recuperar($filia_id, $produto_id)
     {
-        $estoque = $this->estoque->encontrar($id);
+        $estoque = $this->estoque->recuperar($filia_id, $produto_id);
 
         return $estoque;
     }

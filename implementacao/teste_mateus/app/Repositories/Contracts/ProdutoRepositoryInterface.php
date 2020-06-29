@@ -12,7 +12,7 @@ interface ProdutoRepositoryInterface
 
     public function atualizar($request, $id);
 
-    public function buscarProduto($valor);
+    public function buscarProduto($valor, $filial_id);
 
     public function excluir($id);
 }

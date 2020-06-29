@@ -44,10 +44,12 @@ class ProdutoRepository implements ProdutoRepositoryInterface
 		return $produto;
 	}
 
-	public function buscarProduto($valor){
-		return $this->model->join('estoques', 'estoques.produto_id', '=', 'produtos.produto_id')
-			// ->where(['codigo' => $valor, 'filial_id' => $filial_id])
-			->orWhere('descricao', 'like', "%".$valor."%")->get();
+	public function buscarProduto($valor, $filial_id){
+		return $this->model
+				->where(function($query) use ($valor){
+					return $query->where('codigo', $valor)
+					->orWhere('descricao', 'like', '%'.$valor.'%');
+				})->get();
 	}
 
 	public function excluir($id){

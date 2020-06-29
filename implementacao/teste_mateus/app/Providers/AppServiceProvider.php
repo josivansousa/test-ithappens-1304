@@ -53,6 +53,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\EstoqueRepositoryInterface',
             'App\Repositories\EstoqueRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Contracts\StatusPedidoRepositoryInterface',
+            'App\Repositories\StatusPedidoRepository'
+        );
     }
     
 

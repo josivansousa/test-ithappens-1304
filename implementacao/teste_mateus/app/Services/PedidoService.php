@@ -11,11 +11,14 @@ class PedidoService
 {
     protected $pedidoEstoque;
     protected $itemPedidoService;
+    protected $estoqueService;
 
-    public function __construct(PedidoEstoqueRepositoryInterface $pedidoEstoque, ItemPedidoService $itemPedidoService)
+    public function __construct(PedidoEstoqueRepositoryInterface $pedidoEstoque, ItemPedidoService $itemPedidoService, EstoqueService $estoqueService)
     {
         $this->pedidoEstoque = $pedidoEstoque;
         $this->itemPedidoService = $itemPedidoService;
+        $this->estoqueService = $estoqueService;
+
     }
 
     public function listar()
@@ -74,7 +77,23 @@ class PedidoService
         }
 
         foreach ($pedidoEstoque->itensPedido as $key => $itemPedido) {
-            $this->itemPedidoService->setarStatusProcessado($itemPedido->id);
+            if($itemPedido->status_item_id != 3){
+                $request = [
+                    'filial_id'     => $pedidoEstoque->filial_id,
+                    'produto_id'    => $itemPedido->produto_id,
+                    'valor_unitario'=> $itemPedido->valor_unitario,
+                    'qtd_total'     => $itemPedido->qtd,
+                    'status_pedido_id' => $pedidoEstoque->status_pedido_id,
+                    'status_item_id' => $itemPedido->status_item_id 
+                ];
+                
+                
+                $this->estoqueService->atualizarEstoque($request);
+    
+                $this->itemPedidoService->setarStatusCancelado($itemPedido->id);
+            }
+
+            $request = [];
         }
     }
 }

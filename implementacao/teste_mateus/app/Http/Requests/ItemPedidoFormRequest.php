@@ -24,14 +24,16 @@ class ItemPedidoFormRequest extends FormRequest
      */
     public function rules()
     {
+        $pedido_id = $this->pedido_estoque_id;
         $rules = [
             'pedido_estoque_id' => 'required|exists:pedidos_estoque,id',
             'valor_unitario'    => 'required|numeric',
             'produto_id'        => [
                 'required',
                 'exists:produtos,id',
-                Rule::unique('itens_pedido', 'produto_id')->where(function ($query){ 
-                    return $query->whereIn('status_item_id', [1,2])->get();
+                Rule::unique('itens_pedido', 'produto_id')->where(function ($query) use ($pedido_id){ 
+                    return $query->where('pedido_estoque_id', $pedido_id)
+                    ->whereIn('status_item_id', [1,2])->get();
                 })
             ]
         ];

@@ -70,10 +70,10 @@ class ProdutoController extends Controller
         }
     }
 
-    public function buscarProduto($valor)
+    public function buscarProduto($valor, $filial_id)
     {
         try{
-            $produtos = $this->produto->buscarProduto($valor);
+            $produtos = $this->produto->buscarProduto($valor, $filial_id);
 
             return ['status' => 'sucesso', 'produtos' => $produtos];
         } catch(\Exception $e){

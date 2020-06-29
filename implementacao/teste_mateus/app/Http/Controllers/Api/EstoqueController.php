@@ -27,10 +27,10 @@ class EstoqueController extends Controller
         }
     }
     
-    public function recuperar($id)
+    public function recuperar($filia_id, $produto_id)
     {
         try {
-            $estoque = $this->estoque->encontrar($id);
+            $estoque = $this->estoque->recuperar($filia_id, $produto_id);
 
             return ['status' => 'sucesso', 'estoque' => $estoque];
         } catch(\Exception $e){
@@ -38,7 +38,6 @@ class EstoqueController extends Controller
         }
     }
 
-    // public function atualizarEstoque(EstoqueFormRequest $request)
     public function atualizarEstoque($item_pedido)
     {
         try{

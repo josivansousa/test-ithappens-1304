@@ -22,7 +22,13 @@ class ItemPedidoRepository implements ItemPedidoRepositoryInterface
 	public function recuperar($id){
 		return $this->model->with('pedidosEstoque')->find($id);
 	}
-	
+
+	public function recuperarPedido($pedidoEstoqueId){
+		return $this->model->with('pedidosEstoque', 'produtos', 'status')
+			->where('pedido_estoque_id', $pedidoEstoqueId)
+			->get();
+	}
+
 	public function salvar($request){
 		$request += ['status_item_id' => 1];
 
