@@ -38,10 +38,11 @@ class EstoqueController extends Controller
         }
     }
 
-    public function atualizarEstoque(EstoqueFormRequest $request)
+    // public function atualizarEstoque(EstoqueFormRequest $request)
+    public function atualizarEstoque($item_pedido)
     {
         try{
-            $estoque = $this->estoque->atualizarEstoque($request->all());
+            $estoque = $this->estoque->atualizarEstoque($item_pedido);
 
             return ['status' => 'sucesso', 'mensagem' => "Estoque atualizado!"];
         } catch(\Exception $e){

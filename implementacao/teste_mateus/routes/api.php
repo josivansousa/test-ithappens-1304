@@ -64,7 +64,6 @@ Route::group(['prefix' => 'pedidos-estoque'], function(){
     Route::post('/salvar', "Api\PedidoEstoqueController@salvar");
     Route::put('/atualizar/{id}', "Api\PedidoEstoqueController@atualizar");
     Route::delete('/excluir/{id}', "Api\PedidoEstoqueController@excluir");
-
     Route::put('/confirmar-pedido/{id}', "Api\PedidoEstoqueController@confirmarPedido");
 });
 
@@ -74,6 +73,8 @@ Route::group(['prefix' => 'itens-pedido'], function(){
     Route::post('/salvar', "Api\ItemPedidoController@salvar");
     Route::put('/atualizar/{id}', "Api\ItemPedidoController@atualizar");
     Route::delete('/excluir/{id}', "Api\ItemPedidoController@excluir");
+
+    Route::put('/retirada/{id}', "Api\ItemPedidoController@retirada");
 });
 
 Route::group(['prefix' => 'estoque'], function(){

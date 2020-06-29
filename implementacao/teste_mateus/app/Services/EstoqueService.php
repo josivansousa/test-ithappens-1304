@@ -31,22 +31,17 @@ class EstoqueService
     
     public function recuperar($id)
     {
-        try {
-            $estoque = $this->estoque->encontrar($id);
+        $estoque = $this->estoque->encontrar($id);
 
-            return $estoque;
-        } catch(\Exception $e){
-            return $e->getMessage();
-        }
+        return $estoque;
     }
 
     public function atualizarEstoque($request)
     {
-        $itemPedido = $this->itemPedido->recuperar($request['item_pedido_id']);
         $estoque = $this->estoque->recuperar($request['filial_id'], $request['produto_id']);
 
         if($estoque){
-            if ($itemPedido->pedidosEstoque->status_pedido_id == 1) {
+            if ($request['status_pedido_id'] == 1) {
                 $estoque = $this->estoque->incrementar($request, $estoque);
             }else{
                 if($estoque->qtd_total < $request['qtd_total']){
@@ -57,8 +52,6 @@ class EstoqueService
         }else {
             $estoque = $this->estoque->salvar($request);
         }
-
-        return "Estoque atualizado com sucesso!";
     }
 
     public function excluir($id){

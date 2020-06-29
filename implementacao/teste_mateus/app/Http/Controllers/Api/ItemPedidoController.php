@@ -60,6 +60,17 @@ class ItemPedidoController extends Controller
         }
     }
 
+    public function retirada($id)
+    {
+        try{
+            $itemPedido = $this->itemPedido->retirada($id);
+
+            return ['status' => 'sucesso', 'mensagem' => 'Item atualizado com sucesso!'];
+        } catch(\Exception $e){
+            return ['status' => 'erro', 'mensagem' => $e->getMessage()];
+        }
+    }
+
     public function excluir($id){
         try {
             $this->itemPedido->excluir($id);

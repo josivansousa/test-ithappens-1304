@@ -25,10 +25,6 @@ class EstoqueRepository implements EstoqueRepositoryInterface
 			'produto_id' => $produto_id
 		])->first();
 
-		if(!$estoque){
-			throw new \Exception("Estoque não encontrada!");
-		}
-
 		return $estoque;
 	}
 	
