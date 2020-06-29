@@ -20,7 +20,7 @@ class ItemPedido extends Model
     }
 
     public function produtos(){
-        return $this->hasOne("App\Models\Produto");
+        return $this->hasOne("App\Models\Produto", 'id', 'produto_id');
     }
 
     public function status(){

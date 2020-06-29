@@ -20,9 +20,12 @@ class ClienteController extends Controller
         try {
             $clientes = $this->cliente->listar();
 
-            return ['status' => 'sucesso', 'clientes' => $clientes];
+            return response()->json([
+                'status' => 'sucesso', 'clientes' => $clientes
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
+            
         }
     }
     
@@ -42,7 +45,9 @@ class ClienteController extends Controller
         try{
             $cliente = $this->cliente->salvar($request->all());
 
-            return ['status' => 'sucesso', 'cliente' => $cliente];
+            return response()->json([
+                'status' => 'sucesso', 'cliente' => $cliente
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -53,7 +58,9 @@ class ClienteController extends Controller
         try{
             $cliente = $this->cliente->atualizar($request->all(), $id);
 
-            return ['status' => 'sucesso', 'mensagem' => 'Cliente atualizado com sucesso!'];
+            return response()->json([
+                'status' => 'sucesso', 'mensagem' => 'Cliente atualizado com sucesso!'
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }

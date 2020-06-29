@@ -20,7 +20,9 @@ class FilialController extends Controller
         try {
             $filiais = $this->filial->listar();
 
-            return ['status' => 'sucesso', 'filiais' => $filiais];
+            return response()->json([
+                'status' => 'sucesso', 'filiais' => $filiais
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -42,7 +44,9 @@ class FilialController extends Controller
         try{
             $filial = $this->filial->salvar($request->all());
 
-            return ['status' => 'sucesso', 'filial' => $filial];
+            return response()->json([
+                'status' => 'sucesso', 'filial' => $filial
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -53,7 +57,9 @@ class FilialController extends Controller
         try{
             $cliente = $this->filial->atualizar($request->all(), $id);
 
-            return ['status' => 'sucesso', 'mensagem' => 'Filial atualizada com sucesso'];
+            return response()->json([
+                'status' => 'sucesso', 'mensagem' => 'Filial atualizada com sucesso'
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -63,7 +69,9 @@ class FilialController extends Controller
         try {
             $this->filial->excluir($id);
 
-            return ['status' => 'sucesso', 'mensagem' => 'Filial excluído com sucesso'];
+            return response()->json([
+                'status' => 'sucesso', 'mensagem' => 'Filial excluído com sucesso'
+            ], 200);
         } catch (\Exception $e) {
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }

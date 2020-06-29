@@ -16,11 +16,11 @@ class PedidoEstoqueRepository implements PedidoEstoqueRepositoryInterface
 	}
 
 	public function listar(){
-		return $this->model->get();
+		return $this->model->with('itensPedido.produtos.estoque')->paginate(10);
 	}
 
 	public function recuperar($id){
-		return $this->model->find($id);
+		return $this->model->with('itensPedido.produtos.estoque')->find($id);
 	}
 	
 	public function salvar($request){

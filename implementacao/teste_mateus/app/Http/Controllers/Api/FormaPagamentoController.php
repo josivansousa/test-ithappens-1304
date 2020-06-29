@@ -20,7 +20,9 @@ class FormaPagamentoController extends Controller
         try {
             $formasPagamentos = $this->formaPagamento->listar();
 
-            return ['status' => 'sucesso', 'formasPagamentos' => $formasPagamentos];
+            return response()->json([
+                'status' => 'sucesso', 'formasPagamentos' => $formasPagamentos
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -42,7 +44,9 @@ class FormaPagamentoController extends Controller
         try{
             $formaPagamento = $this->formaPagamento->salvar($request->all());
 
-            return ['status' => 'sucesso', 'formaPagamento' => $formaPagamento];
+            return response()->json([
+                'status' => 'sucesso', 'formaPagamento' => $formaPagamento
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -53,7 +57,9 @@ class FormaPagamentoController extends Controller
         try{
             $formaPagamento = $this->formaPagamento->atualizar($request->all(), $id);
 
-            return ['status' => 'sucesso', 'mensagem' => 'Forma de pagamento atualizado com sucesso!'];
+            return response()->json([
+                'status' => 'sucesso', 'mensagem' => 'Forma de pagamento atualizado com sucesso!'
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -63,7 +69,9 @@ class FormaPagamentoController extends Controller
         try {
             $this->formaPagamento->excluir($id);
 
-            return ['status' => 'sucesso', 'mensagem' => 'Forma de pagamento excluído com sucesso!'];
+            return response()->json([
+                'status' => 'sucesso', 'mensagem' => 'Forma de pagamento excluído com sucesso!'
+            ], 200);
         } catch (\Exception $e) {
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }

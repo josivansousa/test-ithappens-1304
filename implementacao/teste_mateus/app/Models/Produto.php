@@ -17,6 +17,6 @@ class Produto extends Model
     }
 
     public function estoque(){
-        return $this->hasOne("App\Models\Estoque");
+        return $this->hasOne("App\Models\Estoque", 'produto_id', 'id');
     }
 }

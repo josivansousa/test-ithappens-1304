@@ -20,7 +20,9 @@ class UsuarioController extends Controller
         try {
             $usuarios = $this->usuario->listar();
 
-            return ['status' => 'sucesso', 'usuario' => $usuarios];
+            return response()->json([
+                'status' => 'sucesso', 'usuarios' => $usuarios
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -42,7 +44,9 @@ class UsuarioController extends Controller
         try{
             $usuario = $this->usuario->salvar($request->all());
 
-            return ['status' => 'sucesso', 'usuario' => $usuario];
+            return response()->json([
+                'status' => 'sucesso', 'usuario' => $usuario
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -53,7 +57,9 @@ class UsuarioController extends Controller
         try{
             $usuario = $this->usuario->atualizar($request->all(), $id);
 
-            return ['status' => 'sucesso', 'mensagem' => 'Usuario atualizado com sucesso!'];
+            return response()->json([
+                'status' => 'sucesso', 'mensagem' => 'Usuario atualizado com sucesso!'
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -63,7 +69,9 @@ class UsuarioController extends Controller
         try {
             $this->usuario->excluir($id);
 
-            return ['status' => 'sucesso', 'mensagem' => 'Usuario excluído com sucesso!'];
+            return response()->json([
+                'status' => 'sucesso', 'mensagem' => 'Usuario excluído com sucesso!'
+            ], 200);
         } catch (\Exception $e) {
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }

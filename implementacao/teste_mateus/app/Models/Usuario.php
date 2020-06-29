@@ -13,16 +13,20 @@ class Usuario extends Authenticatable implements JWTSubject
     public $fillable = [
         'nome',
         'email',
-        'senha',
+        // 'senha',
         'filial_id'
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
     ];
 
     public function pedidosEstoque(){
         return $this->hasMany("App\Models\PedidoEstoque");
     }
 
-/**
-     * Get the identifier that will be stored in the subject claim of the JWT.
+    /**
+    * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed
      */

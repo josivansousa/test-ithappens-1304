@@ -47,7 +47,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        // dd($exception instanceof \Tymon\JWTAuth\Exceptions\TokenBlacklistedException);
         if($request->is('api/*')){
             if ($exception instanceof ValidationException) {
                 return response()->json(
@@ -61,10 +60,14 @@ class Handler extends ExceptionHandler
             return response()->json(['erro' => 'token_expired'], $exception->getStatusCode());
         } else if ($exception instanceof Tymon\JWTAuth\Exceptions\TokenInvalidException) {
             return response()->json(['erro' => 'token_invalid'], $exception->getStatusCode());
+        } else if($exception instanceof \Tymon\JWTAuth\Exceptions\JWTException){
+            return response()->json(['erro' => $exception->getMessage()]);
         } else if($exception instanceof \Tymon\JWTAuth\Exceptions\TokenBlacklistedException){
             return response()->json(['erro' => 'The token has been blacklisted']);
         }
-    
+        
+        // dd($exception->getStatusCode(), $exception->getMessage());
         return parent::render($request, $exception);
+        // return response()->json(['erro' => $exception->getMessage(), 'code' => $exception->getStatusCode()]);
     }
 }

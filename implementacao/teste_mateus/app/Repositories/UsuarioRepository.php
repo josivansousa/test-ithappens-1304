@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\User;
+use App\Models\Usuario;
 use App\Repositories\Contracts\UsuarioRepositoryInterface;
 use DB;
 
@@ -10,13 +10,13 @@ class UsuarioRepository implements UsuarioRepositoryInterface
 {
 	private $model;
 
-	public function __construct(User $model)
+	public function __construct(Usuario $model)
 	{
 		$this->model = $model;
 	}
 
 	public function listar(){
-		return $this->model->get();
+		return $this->model->paginate(10);
 	}
 
 	public function recuperar($id){

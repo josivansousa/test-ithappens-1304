@@ -43,7 +43,9 @@ class ItemPedidoController extends Controller
         try{
             $itemPedido = $this->itemPedido->salvar($request->all());
 
-            return ['status' => 'sucesso', 'itemPedido' => $itemPedido];
+            return response()->json([
+                'status' => 'sucesso', 'itemPedido' => $itemPedido
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }

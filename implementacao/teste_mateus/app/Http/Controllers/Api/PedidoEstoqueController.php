@@ -21,7 +21,9 @@ class PedidoEstoqueController extends Controller
         try {
             $pedidosEstoque = $this->pedidoEstoque->listar();
 
-            return ['status' => 'sucesso', 'pedidosEstoque' => $pedidosEstoque];
+            return response()->json([
+                'status' => 'sucesso', 'pedidosEstoque' => $pedidosEstoque
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -30,7 +32,7 @@ class PedidoEstoqueController extends Controller
     public function recuperar($id)
     {
         try {
-            $pedidoEstoque = $this->pedidoEstoque->encontrar($id);
+            $pedidoEstoque = $this->pedidoEstoque->recuperar($id);
 
             return ['status' => 'sucesso', 'pedidoEstoque' => $pedidoEstoque];
         } catch(\Exception $e){
@@ -43,7 +45,9 @@ class PedidoEstoqueController extends Controller
         try{
             $pedidoEstoque = $this->pedidoEstoque->salvar($request->all());
 
-            return ['status' => 'sucesso', 'pedidoEstoque' => $pedidoEstoque];
+            return response()->json([
+                'status' => 'sucesso', 'pedidoEstoque' => $pedidoEstoque
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }

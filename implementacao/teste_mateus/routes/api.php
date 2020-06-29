@@ -18,59 +18,59 @@ Route::get('/auth/usuario-autenticado', 'Api\AuthController@usuarioAutenticado')
 Route::get('/auth/sair', 'Api\AuthController@sair');
 Route::get('/auth/atualizar', 'Api\AuthController@atualizar');
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
+// Route::middleware('jwt.auth')->group(function () {
+
 // });
 
-// Route::group(['prefix' => 'produtos'], function(){
-//     Route::get('/', "Api\ProdutoController@listar");
-//     Route::get('/recuperar/{id}', "Api\ProdutoController@recuperar");
-//     Route::post('/salvar', "Api\ProdutoController@salvar");
-//     Route::put('/atualizar/{id}', "Api\ProdutoController@atualizar");
-//     Route::get('/buscar-produto/{valor}', "Api\ProdutoController@buscarProduto");
-//     Route::delete('/excluir/{id}', "Api\ProdutoController@excluir");
-// });
+Route::group(['prefix' => 'produtos'], function(){
+    Route::get('/', "Api\ProdutoController@listar");
+    Route::get('/recuperar/{id}', "Api\ProdutoController@recuperar");
+    Route::post('/salvar', "Api\ProdutoController@salvar");
+    Route::put('/atualizar/{id}', "Api\ProdutoController@atualizar");
+    Route::get('/buscar-produto/{valor}', "Api\ProdutoController@buscarProduto");
+    Route::delete('/excluir/{id}', "Api\ProdutoController@excluir");
+});
 
-// Route::group(['prefix' => 'filiais'], function(){
-//     Route::get('/', "Api\FilialController@listar");
-//     Route::get('/recuperar/{id}', "Api\FilialController@recuperar");
-//     Route::post('/salvar', "Api\FilialController@salvar");
-//     Route::put('/atualizar/{id}', "Api\FilialController@atualizar");
-//     Route::delete('/excluir/{id}', "Api\FilialController@excluir");
-// });
+Route::group(['prefix' => 'filiais'], function(){
+    Route::get('/', "Api\FilialController@listar");
+    Route::get('/recuperar/{id}', "Api\FilialController@recuperar");
+    Route::post('/salvar', "Api\FilialController@salvar");
+    Route::put('/atualizar/{id}', "Api\FilialController@atualizar");
+    Route::delete('/excluir/{id}', "Api\FilialController@excluir");
+});
 
-// Route::group(['prefix' => 'clientes'], function(){
-//     Route::get('/', "Api\ClienteController@listar");
-//     Route::get('/recuperar/{id}', "Api\ClienteController@recuperar");
-//     Route::post('/salvar', "Api\ClienteController@salvar");
-//     Route::put('/atualizar/{id}', "Api\ClienteController@atualizar");
-//     Route::delete('/excluir/{id}', "Api\ClienteController@excluir");
-// });
+Route::group(['prefix' => 'clientes'], function(){
+    Route::get('/', "Api\ClienteController@listar");
+    Route::get('/recuperar/{id}', "Api\ClienteController@recuperar");
+    Route::post('/salvar', "Api\ClienteController@salvar");
+    Route::put('/atualizar/{id}', "Api\ClienteController@atualizar");
+    Route::delete('/excluir/{id}', "Api\ClienteController@excluir");
+});
 
-// Route::group(['prefix' => 'usuarios'], function(){
-//     Route::get('/', "Api\UsuarioController@listar");
-//     Route::get('/recuperar/{id}', "Api\UsuarioController@recuperar");
-//     Route::post('/salvar', "Api\UsuarioController@salvar");
-//     Route::put('/atualizar/{id}', "Api\UsuarioController@atualizar");
-//     Route::delete('/excluir/{id}', "Api\UsuarioController@excluir");
-// });
+Route::group(['prefix' => 'usuarios'], function(){
+    Route::get('/', "Api\UsuarioController@listar");
+    Route::get('/recuperar/{id}', "Api\UsuarioController@recuperar");
+    Route::post('/salvar', "Api\UsuarioController@salvar");
+    Route::put('/atualizar/{id}', "Api\UsuarioController@atualizar");
+    Route::delete('/excluir/{id}', "Api\UsuarioController@excluir");
+});
 
-// Route::group(['prefix' => 'formas_pagamento'], function(){
-//     Route::get('/', "Api\FormaPagamentoController@listar");
-//     Route::get('/recuperar/{id}', "Api\FormaPagamentoController@recuperar");
-//     Route::post('/salvar', "Api\FormaPagamentoController@salvar");
-//     Route::put('/atualizar/{id}', "Api\FormaPagamentoController@atualizar");
-//     Route::delete('/excluir/{id}', "Api\FormaPagamentoController@excluir");
-// });
+Route::group(['prefix' => 'formas-pagamento'], function(){
+    Route::get('/', "Api\FormaPagamentoController@listar");
+    Route::get('/recuperar/{id}', "Api\FormaPagamentoController@recuperar");
+    Route::post('/salvar', "Api\FormaPagamentoController@salvar");
+    Route::put('/atualizar/{id}', "Api\FormaPagamentoController@atualizar");
+    Route::delete('/excluir/{id}', "Api\FormaPagamentoController@excluir");
+});
 
-// Route::group(['prefix' => 'pedidos-estoque'], function(){
-//     Route::get('/', "Api\PedidoEstoqueController@listar");
-//     Route::get('/recuperar/{id}', "Api\PedidoEstoqueController@recuperar");
-//     Route::post('/salvar', "Api\PedidoEstoqueController@salvar");
-//     Route::put('/atualizar/{id}', "Api\PedidoEstoqueController@atualizar");
-//     Route::delete('/excluir/{id}', "Api\PedidoEstoqueController@excluir");
-//     Route::put('/confirmar-pedido/{id}', "Api\PedidoEstoqueController@confirmarPedido");
-// });
+Route::group(['prefix' => 'pedidos-estoque'], function(){
+    Route::get('/', "Api\PedidoEstoqueController@listar");
+    Route::get('/recuperar/{id}', "Api\PedidoEstoqueController@recuperar");
+    Route::post('/salvar', "Api\PedidoEstoqueController@salvar");
+    Route::put('/atualizar/{id}', "Api\PedidoEstoqueController@atualizar");
+    Route::delete('/excluir/{id}', "Api\PedidoEstoqueController@excluir");
+    Route::put('/confirmar-pedido/{id}', "Api\PedidoEstoqueController@confirmarPedido");
+});
 
 Route::group(['prefix' => 'itens-pedido'], function(){
     Route::get('/', "Api\ItemPedidoController@listar");
@@ -82,10 +82,10 @@ Route::group(['prefix' => 'itens-pedido'], function(){
     Route::put('/retirada/{id}', "Api\ItemPedidoController@retirada");
 });
 
-// Route::group(['prefix' => 'estoque'], function(){
-//     Route::get('/', "Api\EstoqueController@listar");
-//     // Route::get('/recuperar/{id}', "Api\EstoqueController@recuperar");
-//     Route::post('/salvar', "Api\EstoqueController@atualizarEstoque");
-//     // Route::put('/atualizarEstoque/{id}', "Api\EstoqueController@atualizar");
-//     // Route::delete('/excluir/{id}', "Api\EstoqueController@excluir");
-// });
+Route::group(['prefix' => 'estoque'], function(){
+    Route::get('/', "Api\EstoqueController@listar");
+    // Route::get('/recuperar/{id}', "Api\EstoqueController@recuperar");
+    Route::post('/salvar', "Api\EstoqueController@atualizarEstoque");
+    // Route::put('/atualizarEstoque/{id}', "Api\EstoqueController@atualizar");
+    // Route::delete('/excluir/{id}', "Api\EstoqueController@excluir");
+});

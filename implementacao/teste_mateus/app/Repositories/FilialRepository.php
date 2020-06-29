@@ -16,7 +16,7 @@ class FilialRepository implements FilialRepositoryInterface
 	}
 
 	public function listar(){
-		return $this->model->get();
+		return $this->model->paginate(10);
 	}
 
 	public function recuperar($id){

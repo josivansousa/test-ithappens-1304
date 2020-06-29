@@ -16,7 +16,7 @@ class ProdutoRepository implements ProdutoRepositoryInterface
 	}
 
 	public function listar(){
-		$this->model->get();
+		return $this->model->paginate(10);
 	}
 
 	public function recuperar($id){
@@ -44,9 +44,9 @@ class ProdutoRepository implements ProdutoRepositoryInterface
 		return $produto;
 	}
 
-	public function buscarProduto($valor, $filial_id){
+	public function buscarProduto($valor){
 		return $this->model->join('estoques', 'estoques.produto_id', '=', 'produtos.produto_id')
-			->where(['codigo' => $valor, 'filial_id' => $filial_id])
+			// ->where(['codigo' => $valor, 'filial_id' => $filial_id])
 			->orWhere('descricao', 'like', "%".$valor."%")->get();
 	}
 

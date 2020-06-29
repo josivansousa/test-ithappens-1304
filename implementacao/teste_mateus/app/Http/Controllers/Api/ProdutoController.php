@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use OpenApi\Annotations as OA;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\ProdutoRepositoryInterface;
@@ -14,13 +15,16 @@ class ProdutoController extends Controller
     {
         $this->produto = $produto;
     }
-
+  
     public function listar()
     {
         try {
             $produtos = $this->produto->listar();
 
-            return ['status' => 'sucesso', 'produtos' => $produtos];
+            return response()->json([
+                'status' => 'sucesso', 'produtos' => $produtos
+            ], 200);
+
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -31,7 +35,9 @@ class ProdutoController extends Controller
         try {
             $produto = $this->produto->encontrar($id);
 
-            return ['status' => 'sucesso', 'produtos' => $produtos];
+            return response()->json([
+                'status' => 'sucesso', 'produto' => $produto
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -42,7 +48,9 @@ class ProdutoController extends Controller
         try{
             $produto = $this->produto->salvar($request->all());
 
-            return ['status' => 'sucesso', 'produtos' => $produtos];
+            return response()->json([
+                'status' => 'sucesso', 'produto' => $produto
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -53,7 +61,9 @@ class ProdutoController extends Controller
         try{
             $produto = $this->produto->atualizar($request->all(), $id);
 
-            return ['status' => 'sucesso', 'mensagem' => 'Produto atualizado com sucesso!'];
+            return response()->json([
+                'status' => 'sucesso', 'mensagem' => 'Produto atualizado com sucesso!'
+            ], 200);
         } catch(\Exception $e){
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
@@ -74,7 +84,9 @@ class ProdutoController extends Controller
         try {
             $this->produto->excluir($id);
 
-            return ['status' => 'sucesso', 'produtos' => 'Produto excluído com sucesso!'];
+            return response()->json([
+                'status' => 'sucesso', 'produto' => 'Produto excluído com sucesso!'
+            ], 200);
         } catch (\Exception $e) {
             return ['status' => 'erro', 'mensagem' => $e->getMessage()];
         }
