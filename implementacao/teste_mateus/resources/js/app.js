@@ -44,6 +44,11 @@ import FormProduto from './components/produtos/FormProduto.vue'
 import FormEditProduto from './components/produtos/FormEditProduto.vue'
 import ListaProduto from './components/produtos/ListaProduto.vue'
 
+//Componentes de pedidos
+// import FormProduto from './components/produtos/FormProduto.vue'
+// import FormEditProduto from './components/produtos/FormEditProduto.vue'
+import ListaPedido from './components/pedidos/ListaPedido.vue'
+
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');
 
@@ -62,10 +67,11 @@ window.onload = function () {
             ListaFormaPagamento,
             FormUsuario,
             FormEditUsuario,
+            ListaUsuario,
             FormProduto,
             FormEditProduto,
             ListaProduto,
-            ListaUsuario
+            ListaPedido
         },
     });
 }

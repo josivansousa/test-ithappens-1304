@@ -17,19 +17,19 @@ class PedidoEstoque extends Model
     ];
 
     public function filial(){
-        return $this->hasOne("App\Models\Filial");
+        return $this->hasOne("App\Models\Filial", 'id', 'filial_id');
     }
 
     public function cliente(){
-        return $this->hasOne("App\Models\Cliente");
+        return $this->hasOne("App\Models\Cliente", 'id', 'cliente_id');
     }
 
-    public function user(){
-        return $this->hasOne("App\Models\User");
+    public function usuario(){
+        return $this->hasOne("App\Models\Usuario", 'id', 'user_id');
     }
 
     public function status(){
-        return $this->hasOne("App\Models\Status");
+        return $this->hasOne("App\Models\StatusPedido", 'id', 'status_pedido_id');
     }
 
     public function itensPedido(){
@@ -37,6 +37,6 @@ class PedidoEstoque extends Model
     }
 
     public function formaPagamento(){
-        return $this->hasOne("App\Models\FormaPagamento");
+        return $this->hasOne("App\Models\FormaPagamento", 'id', 'forma_pagamento_id');
     }
 }

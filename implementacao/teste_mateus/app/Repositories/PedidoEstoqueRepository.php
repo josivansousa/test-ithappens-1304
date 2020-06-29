@@ -16,7 +16,9 @@ class PedidoEstoqueRepository implements PedidoEstoqueRepositoryInterface
 	}
 
 	public function listar(){
-		return $this->model->with('itensPedido.produtos.estoque')->paginate(10);
+		return $this->model
+			->with('itensPedido.produtos.estoque', 'cliente', 'usuario', 'filial','status', 'formaPagamento')
+			->paginate(10);
 	}
 
 	public function recuperar($id){

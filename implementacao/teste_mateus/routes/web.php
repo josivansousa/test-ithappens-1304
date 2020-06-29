@@ -45,8 +45,8 @@ Route::group(['prefix' => 'produtos'], function(){
     Route::get('/atualizar/{id}', 'ProdutoController@atualizar');    
 });
 
-Route::group(['prefix' => 'pedido-estoque'], function(){
-    Route::get('/', 'ProdutoController@listar');
-    Route::get('/cadastrar', 'ProdutoController@cadastro');
-    Route::get('/atualizar/{id}', 'ProdutoController@atualizar');    
+Route::group(['prefix' => 'pedidos-estoque'], function(){
+    Route::get('/', 'PedidoEstoqueController@listar');
+    Route::get('/cadastrar', 'PedidoEstoqueController@cadastro');
+    Route::get('/atualizar/{id}', 'PedidoEstoqueController@atualizar');    
 });
