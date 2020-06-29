@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\ClienteRepositoryInterface;
+use App\Http\Requests\ClienteFormRequest;
 
 class ClienteController extends Controller
 {
@@ -32,7 +33,7 @@ class ClienteController extends Controller
     public function recuperar($id)
     {
         try {
-            $cliente = $this->cliente->encontrar($id);
+            $cliente = $this->cliente->recuperar($id);
 
             return ['status' => 'sucesso', 'cliente' => $cliente];
         } catch(\Exception $e){
@@ -40,7 +41,7 @@ class ClienteController extends Controller
         }
     }
     
-    public function salvar(Request $request)
+    public function salvar(ClienteFormRequest $request)
     {
         try{
             $cliente = $this->cliente->salvar($request->all());
@@ -53,7 +54,7 @@ class ClienteController extends Controller
         }
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(ClienteFormRequest $request, $id)
     {
         try{
             $cliente = $this->cliente->atualizar($request->all(), $id);

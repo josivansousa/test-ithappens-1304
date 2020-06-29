@@ -13,12 +13,15 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
-<link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <!-- Favicons -->
-<meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
-<meta name="theme-color" content="#563d7c">
+        <!-- Favicons -->
+    <meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+    <script>
 
+      var urlBase = "{{url('/api')}}";
+    </script>
 
     <style>
       .bd-placeholder-img {
@@ -98,12 +101,9 @@
       </div>
     </nav>
 
-    <main id="app" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        @yield('conteudo')
-  
-      </div>
-    </main>
+    <div id="app" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="margin-top: 30px;">
+      @yield('conteudo')
+    </div>
   </div>
 </div>
 <script src="{{ asset('/js/build.js') }}" type="text/javascript"></script>
@@ -112,5 +112,5 @@
       <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="https://getbootstrap.com/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-        <script src="https://getbootstrap.com/docs/4.5/examples/dashboard/dashboard.js"></script></body>
+        <!-- <script src="https://getbootstrap.com/docs/4.5/examples/dashboard/dashboard.js"></script></body> -->
 </html>

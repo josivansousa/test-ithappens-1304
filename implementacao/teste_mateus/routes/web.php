@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('clientes.listar');
 });
+
+Route::group(['prefix' => 'clientes'], function(){
+    Route::get('/', 'ClienteController@listar');
+    Route::get('/cadastrar', 'ClienteController@cadastro');
+    Route::get('/atualizar/{id}', 'ClienteController@atualizar');    
+});

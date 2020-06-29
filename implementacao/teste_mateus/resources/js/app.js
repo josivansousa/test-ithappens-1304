@@ -6,6 +6,7 @@ import Mixins from './Mixin.js'
 import money from 'v-money'
 import VueTheMask from 'vue-the-mask'
 import Pagination from 'laravel-vue-pagination'
+import swal from 'sweetalert2';
 
 Vue.use(Pagination)
 Vue.use(money, {precision: 4})
@@ -15,10 +16,12 @@ Vue.mixin(Mixins)
 Vue.use(VueTheMask)
 
 window.moment = moment;
+window.Swal = swal;
 
 
-//Componentes de Fornecedor
-// import FormFornecedor from './components/fornecedor/FormFornecedor.vue'
+//Componentes de clientes
+import FormCliente from './components/clientes/FormCliente.vue'
+import FormEditCliente from './components/clientes/FormEditCliente.vue'
 // import ListaFornecedores from './components/fornecedor/ListaFornecedores.vue'
 // import EditFornecedor from './components/fornecedor/EditFornecedor.vue'
 
@@ -28,7 +31,8 @@ window.onload = function () {
     var main = new Vue({ // eslint-disable-line no-new
         el: '#app',
         components: {
-
+            FormCliente,
+            FormEditCliente
         },
     });
 }
