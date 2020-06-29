@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\FilialRepositoryInterface;
+use App\Http\Requests\FilialFormRequest;
 
 class FilialController extends Controller
 {
@@ -31,7 +32,7 @@ class FilialController extends Controller
     public function recuperar($id)
     {
         try {
-            $filial = $this->filial->encontrar($id);
+            $filial = $this->filial->recuperar($id);
 
             return ['status' => 'sucesso', 'filial' => $filial];
         } catch(\Exception $e){
@@ -39,7 +40,7 @@ class FilialController extends Controller
         }
     }
 
-    public function salvar(Request $request)
+    public function salvar(FilialFormRequest $request)
     {
         try{
             $filial = $this->filial->salvar($request->all());
@@ -52,7 +53,7 @@ class FilialController extends Controller
         }
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(FilialFormRequest $request, $id)
     {
         try{
             $cliente = $this->filial->atualizar($request->all(), $id);

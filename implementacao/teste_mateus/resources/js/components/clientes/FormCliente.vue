@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-lg-6">
                             <label>
-                                DAP:
+                                CPF:
                             </label>
                             <input type="text" class="form-control m-input" v-model="cliente.cpf" placeholder="CPF do cliente">
                             <span class="m-form__help">

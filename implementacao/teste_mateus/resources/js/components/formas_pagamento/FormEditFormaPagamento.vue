@@ -1,25 +1,16 @@
 <template>
-    <div id="form-edit-cliente">
+    <div id="form-edit-filial">
         <form class="m-form m-form--fit">
             <div class="m-portlet__body">
                 <div class="m-form__section m-form__section--first">
                     <div class="form-group m-form__group row">
                         <div class="col-lg-6">
                             <label>
-                                Cliente: {{id}}
+                                Nome:
                             </label>
-                            <input type="text" class="form-control m-input" v-model="cliente.nome" placeholder="Nome do cliente">
+                            <input type="text" class="form-control m-input" v-model="forma_pagamento.forma_pagamento" placeholder="Nome da forma de pagamento">
                             <span class="m-form__help">
-                                Por favor, digite o nome
-                            </span>
-                        </div>
-                        <div class="col-lg-6">
-                            <label>
-                                CPF:
-                            </label>
-                            <input type="text" class="form-control m-input" v-model="cliente.cpf" placeholder="CPF do cliente">
-                            <span class="m-form__help">
-                                Por favor, digite o CPF
+                                Por favor, digite o nome da forma de pagamento
                             </span>
                         </div>
                     </div>
@@ -41,15 +32,15 @@
 
 <script>
     export default {
-        name: 'form-edit-cliente',
+        name: 'form-edit-filial',
     	props : ['id'],
         data () {
             return {
                 urlBase: urlBase,
-                titulo: 'Atualizar cliente',
+                titulo: 'Atualizar forma de pagamento',
                 formRequest : '',
                 form_errors: {},
-                cliente: '',
+                forma_pagamento: '',
             }
         },
         methods : {
@@ -60,15 +51,15 @@
                     showCancelButton: true,
                     title: 'Atualizar',
                     confirmButtonText: 'Salvar',
-                    text: 'Atualizar cliente?',
+                    text: 'Atualizar filial?',
                     showLoaderOnConfirm: true,
                     preConfirm: () => {
-                        return self.$http.put(urlBase + '/clientes/atualizar/'+self.cliente.id, self.cliente).then((response) => {
+                        return self.$http.put(urlBase + '/formas-pagamento/atualizar/'+self.forma_pagamento.id, self.forma_pagamento).then((response) => {
                             self.retorno = response.body;
                             return Swal({
                                 type: 'success',
                                 title: 'Atualizado!',
-                                html: 'Cliente atualizado com sucesso',
+                                html: 'Forma de pagamento atualizado com sucesso',
                             });                            
                         }, response => {                          
                             var form = response.body;
@@ -88,10 +79,10 @@
                     }
                 }])
             },
-            recuperarCliente : function(){
+            recuperarFormaPagamento : function(){
                 self = this;
-                this.$http.get(urlBase + '/clientes/recuperar/'+this.id).then((response) => {
-                    self.cliente = response.body.cliente;
+                this.$http.get(urlBase + '/formas-pagamento/recuperar/'+this.id).then((response) => {
+                    self.forma_pagamento = response.body.formaPagamento;                    
                 }, response => {                          
                     return Swal({
                         type: 'error',
@@ -100,10 +91,9 @@
                     });
                 });
             }
-            
         },
         created () {
-            this.recuperarCliente();
+            this.recuperarFormaPagamento();
         },
     };
 </script>

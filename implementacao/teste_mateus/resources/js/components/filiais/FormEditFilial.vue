@@ -1,25 +1,25 @@
 <template>
-    <div id="form-edit-cliente">
+    <div id="form-edit-filial">
         <form class="m-form m-form--fit">
             <div class="m-portlet__body">
                 <div class="m-form__section m-form__section--first">
                     <div class="form-group m-form__group row">
                         <div class="col-lg-6">
                             <label>
-                                Cliente: {{id}}
+                                Nome:
                             </label>
-                            <input type="text" class="form-control m-input" v-model="cliente.nome" placeholder="Nome do cliente">
+                            <input type="text" class="form-control m-input" v-model="filial.nome" placeholder="Nome da filial">
                             <span class="m-form__help">
                                 Por favor, digite o nome
                             </span>
                         </div>
                         <div class="col-lg-6">
                             <label>
-                                CPF:
+                                CNPJ:
                             </label>
-                            <input type="text" class="form-control m-input" v-model="cliente.cpf" placeholder="CPF do cliente">
+                            <input type="text" class="form-control m-input" v-model="filial.cnpj" placeholder="CNPJ da filial">
                             <span class="m-form__help">
-                                Por favor, digite o CPF
+                                Por favor, digite o CNPJ
                             </span>
                         </div>
                     </div>
@@ -41,15 +41,15 @@
 
 <script>
     export default {
-        name: 'form-edit-cliente',
+        name: 'form-edit-filial',
     	props : ['id'],
         data () {
             return {
                 urlBase: urlBase,
-                titulo: 'Atualizar cliente',
+                titulo: 'Atualizar filial',
                 formRequest : '',
                 form_errors: {},
-                cliente: '',
+                filial: '',
             }
         },
         methods : {
@@ -60,15 +60,15 @@
                     showCancelButton: true,
                     title: 'Atualizar',
                     confirmButtonText: 'Salvar',
-                    text: 'Atualizar cliente?',
+                    text: 'Atualizar filial?',
                     showLoaderOnConfirm: true,
                     preConfirm: () => {
-                        return self.$http.put(urlBase + '/clientes/atualizar/'+self.cliente.id, self.cliente).then((response) => {
+                        return self.$http.put(urlBase + '/filiais/atualizar/'+self.filial.id, self.filial).then((response) => {
                             self.retorno = response.body;
                             return Swal({
                                 type: 'success',
                                 title: 'Atualizado!',
-                                html: 'Cliente atualizado com sucesso',
+                                html: 'Filial atualizado com sucesso',
                             });                            
                         }, response => {                          
                             var form = response.body;
@@ -88,10 +88,10 @@
                     }
                 }])
             },
-            recuperarCliente : function(){
+            recuperarFilial : function(){
                 self = this;
-                this.$http.get(urlBase + '/clientes/recuperar/'+this.id).then((response) => {
-                    self.cliente = response.body.cliente;
+                this.$http.get(urlBase + '/filiais/recuperar/'+this.id).then((response) => {
+                    self.filial = response.body.filial;
                 }, response => {                          
                     return Swal({
                         type: 'error',
@@ -100,10 +100,9 @@
                     });
                 });
             }
-            
         },
         created () {
-            this.recuperarCliente();
+            this.recuperarFilial();
         },
     };
 </script>

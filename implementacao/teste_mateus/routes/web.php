@@ -20,3 +20,21 @@ Route::group(['prefix' => 'clientes'], function(){
     Route::get('/cadastrar', 'ClienteController@cadastro');
     Route::get('/atualizar/{id}', 'ClienteController@atualizar');    
 });
+
+Route::group(['prefix' => 'filiais'], function(){
+    Route::get('/', 'FilialController@listar');
+    Route::get('/cadastrar', 'FilialController@cadastro');
+    Route::get('/atualizar/{id}', 'FilialController@atualizar');    
+});
+
+Route::group(['prefix' => 'formas-pagamento'], function(){
+    Route::get('/', 'FormaPagamentoController@listar');
+    Route::get('/cadastrar', 'FormaPagamentoController@cadastro');
+    Route::get('/atualizar/{id}', 'FormaPagamentoController@atualizar');    
+});
+
+Route::group(['prefix' => 'usuarios'], function(){
+    Route::get('/', 'FormaPagamentoController@listar');
+    Route::get('/cadastrar', 'FormaPagamentoController@cadastro');
+    Route::get('/atualizar/{id}', 'FormaPagamentoController@atualizar');    
+});

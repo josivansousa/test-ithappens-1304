@@ -22,8 +22,14 @@ window.Swal = swal;
 //Componentes de clientes
 import FormCliente from './components/clientes/FormCliente.vue'
 import FormEditCliente from './components/clientes/FormEditCliente.vue'
-// import ListaFornecedores from './components/fornecedor/ListaFornecedores.vue'
-// import EditFornecedor from './components/fornecedor/EditFornecedor.vue'
+
+//Componentes de filiais
+import FormFilial from './components/filiais/FormFilial.vue'
+import FormEditFilial from './components/filiais/FormEditFilial.vue'
+
+//Componentes de formas de pagamento
+import FormFormaPagamento from './components/formas_pagamento/FormFormaPagamento.vue'
+import FormEditFormaPagamento from './components/formas_pagamento/FormEditFormaPagamento.vue'
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');
 
@@ -32,7 +38,11 @@ window.onload = function () {
         el: '#app',
         components: {
             FormCliente,
-            FormEditCliente
+            FormEditCliente,
+            FormFilial,
+            FormEditFilial,
+            FormFormaPagamento,
+            FormEditFormaPagamento,
         },
     });
 }

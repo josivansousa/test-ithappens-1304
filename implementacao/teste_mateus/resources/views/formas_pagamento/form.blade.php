@@ -2,6 +2,8 @@
 
 @section("conteudo")
 
-<h1 class="h2">Forma de pagamento</h1>
+<h1 class="h2">Cadastro de forma de pagamento</h1>
+
+<form-forma-pagamento></form-forma-pagamento>
 
 @endsection
