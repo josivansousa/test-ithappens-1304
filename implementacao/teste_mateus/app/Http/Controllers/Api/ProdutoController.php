@@ -6,6 +6,7 @@ use OpenApi\Annotations as OA;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\ProdutoRepositoryInterface;
+use App\Http\Requests\ProdutoFormRequest;
 
 class ProdutoController extends Controller
 {
@@ -33,7 +34,7 @@ class ProdutoController extends Controller
     public function recuperar($id)
     {
         try {
-            $produto = $this->produto->encontrar($id);
+            $produto = $this->produto->recuperar($id);
 
             return response()->json([
                 'status' => 'sucesso', 'produto' => $produto
@@ -43,7 +44,7 @@ class ProdutoController extends Controller
         }
     }    
 
-    public function salvar(Request $request)
+    public function salvar(ProdutoFormRequest $request)
     {
         try{
             $produto = $this->produto->salvar($request->all());
@@ -56,7 +57,7 @@ class ProdutoController extends Controller
         }
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(ProdutoFormRequest $request, $id)
     {
         try{
             $produto = $this->produto->atualizar($request->all(), $id);

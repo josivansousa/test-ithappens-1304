@@ -68,33 +68,39 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{url('/pedidos-estoque')}}">
               <span data-feather="file"></span>
-              Orders
+              Pedidos de estoque
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{url('/produtos')}}">
               <span data-feather="shopping-cart"></span>
-              Products
+              Produtos
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{url('/filiais')}}">
               <span data-feather="users"></span>
-              Customers
+              Filiais
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{url('/clientes')}}">
               <span data-feather="bar-chart-2"></span>
-              Reports
+              Clientes
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{url('/formas-pagamento')}}">
               <span data-feather="layers"></span>
-              Integrations
+              Formas de pagamento
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('/usuarios')}}">
+              <span data-feather="layers"></span>
+              Usuarios
             </a>
           </li>
         </ul>

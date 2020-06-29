@@ -22,18 +22,28 @@ window.Swal = swal;
 //Componentes de clientes
 import FormCliente from './components/clientes/FormCliente.vue'
 import FormEditCliente from './components/clientes/FormEditCliente.vue'
+import ListaCliente from './components/clientes/ListaCliente.vue'
 
 //Componentes de filiais
 import FormFilial from './components/filiais/FormFilial.vue'
 import FormEditFilial from './components/filiais/FormEditFilial.vue'
+import ListaFilial from './components/filiais/ListaFilial.vue'
 
 //Componentes de formas de pagamento
 import FormFormaPagamento from './components/formas_pagamento/FormFormaPagamento.vue'
 import FormEditFormaPagamento from './components/formas_pagamento/FormEditFormaPagamento.vue'
+import ListaFormaPagamento from './components/formas_pagamento/ListaFormaPagamento.vue'
 
 //Componentes de usuarios
 import FormUsuario from './components/usuarios/FormUsuario.vue'
 import FormEditUsuario from './components/usuarios/FormEditUsuario.vue'
+import ListaUsuario from './components/usuarios/ListaUsuario.vue'
+
+//Componentes de produto
+import FormProduto from './components/produtos/FormProduto.vue'
+import FormEditProduto from './components/produtos/FormEditProduto.vue'
+import ListaProduto from './components/produtos/ListaProduto.vue'
+
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');
 
@@ -43,12 +53,19 @@ window.onload = function () {
         components: {
             FormCliente,
             FormEditCliente,
+            ListaCliente,
             FormFilial,
             FormEditFilial,
+            ListaFilial,
             FormFormaPagamento,
             FormEditFormaPagamento,
+            ListaFormaPagamento,
             FormUsuario,
             FormEditUsuario,
+            FormProduto,
+            FormEditProduto,
+            ListaProduto,
+            ListaUsuario
         },
     });
 }

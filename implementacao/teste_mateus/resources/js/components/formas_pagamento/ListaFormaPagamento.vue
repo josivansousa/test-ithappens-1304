@@ -1,5 +1,5 @@
 <template>
-    <div id="lista-filiais">
+    <div id="lista-forma-pagamento">
         <div class="m-content">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
@@ -11,19 +11,15 @@
                             <th>
                                 Nome
                             </th>
-                            <th nowrap="true">
-                                CNPJ
-                            </th>
                             <th nowrap="true" class="text-center">
                                 Opções
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="filial in filiais.data">
-                            <td>{{filial.id}}</td>
-                            <td>{{filial.nome}}</td>
-                            <td>{{filial.cnpj}}</td>
+                        <tr v-for="forma in formasPagamentos">
+                            <td>{{forma.id}}</td>
+                            <td>{{forma.forma_pagamento}}</td>
                             <td style="text-align: center;">
                                 <button class="btn btn-sm btn-danger">
                                     Excluir
@@ -42,14 +38,14 @@
 
 <script>
     export default {
-        name: 'lista-filiais',
+        name: 'form-edit-filial',
         data () {
             return {
                 urlBase: urlBase,
-                titulo: 'Lista de filiais',
+                titulo: 'Atualizar filial',
                 formRequest : '',
                 form_errors: {},
-                filiais: [],
+                formasPagamentos: [],
             }
         },
         methods : {
@@ -88,10 +84,12 @@
                     }
                 }])
             },
-            recuperarFiliais : function(){
+            recuperarFormasPagamento : function(){
                 self = this;
-                this.$http.get(urlBase + '/filiais').then((response) => {                   
-                    self.filiais = response.body.filiais;
+                this.$http.get(urlBase + '/formas-pagamento').then((response) => {
+                    self.formasPagamentos = response.body.formasPagamentos;
+                    console.log(self.formasPagamentos);
+                    
                 }, response => {                          
                     return Swal({
                         type: 'error',
@@ -102,7 +100,7 @@
             }
         },
         created () {
-            this.recuperarFiliais();
+            this.recuperarFormasPagamento();
         },
     };
 </script>

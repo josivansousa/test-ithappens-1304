@@ -1,5 +1,5 @@
 <template>
-    <div id="lista-filiais">
+    <div id="lista-forma-pagamento">
         <div class="m-content">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
@@ -12,7 +12,7 @@
                                 Nome
                             </th>
                             <th nowrap="true">
-                                CNPJ
+                                CPF
                             </th>
                             <th nowrap="true" class="text-center">
                                 Opções
@@ -20,10 +20,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="filial in filiais.data">
-                            <td>{{filial.id}}</td>
-                            <td>{{filial.nome}}</td>
-                            <td>{{filial.cnpj}}</td>
+                        <tr v-for="cliente in clientes.data">
+                            <td>{{cliente.id}}</td>
+                            <td>{{cliente.nome}}</td>
+                            <td>{{cliente.cpf}}</td>
                             <td style="text-align: center;">
                                 <button class="btn btn-sm btn-danger">
                                     Excluir
@@ -42,14 +42,14 @@
 
 <script>
     export default {
-        name: 'lista-filiais',
+        name: 'form-edit-filial',
         data () {
             return {
                 urlBase: urlBase,
-                titulo: 'Lista de filiais',
+                titulo: 'Listar de clientes',
                 formRequest : '',
                 form_errors: {},
-                filiais: [],
+                clientes: [],
             }
         },
         methods : {
@@ -88,10 +88,10 @@
                     }
                 }])
             },
-            recuperarFiliais : function(){
+            recuperarClientes : function(){
                 self = this;
-                this.$http.get(urlBase + '/filiais').then((response) => {                   
-                    self.filiais = response.body.filiais;
+                this.$http.get(urlBase + '/clientes').then((response) => {                   
+                    self.clientes = response.body.clientes;
                 }, response => {                          
                     return Swal({
                         type: 'error',
@@ -102,7 +102,7 @@
             }
         },
         created () {
-            this.recuperarFiliais();
+            this.recuperarClientes();
         },
     };
 </script>

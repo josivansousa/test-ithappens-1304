@@ -16,7 +16,7 @@ class ProdutoRepository implements ProdutoRepositoryInterface
 	}
 
 	public function listar(){
-		return $this->model->paginate(10);
+		return $this->model->orderBy('descricao')->paginate(10);
 	}
 
 	public function recuperar($id){

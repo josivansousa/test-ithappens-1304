@@ -1,5 +1,5 @@
 <template>
-    <div id="lista-filiais">
+    <div id="form-edit-filial">
         <div class="m-content">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
@@ -12,18 +12,18 @@
                                 Nome
                             </th>
                             <th nowrap="true">
-                                CNPJ
+                                Email
                             </th>
-                            <th nowrap="true" class="text-center">
+                             <th nowrap="true" class="text-center">
                                 Opções
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="filial in filiais.data">
-                            <td>{{filial.id}}</td>
-                            <td>{{filial.nome}}</td>
-                            <td>{{filial.cnpj}}</td>
+                        <tr v-for="usuario in usuarios.data">
+                            <td>{{usuario.id}}</td>
+                            <td>{{usuario.nome}}</td>
+                            <td>{{usuario.email}}</td>
                             <td style="text-align: center;">
                                 <button class="btn btn-sm btn-danger">
                                     Excluir
@@ -42,14 +42,14 @@
 
 <script>
     export default {
-        name: 'lista-filiais',
+        name: 'form-edit-filial',
         data () {
             return {
                 urlBase: urlBase,
-                titulo: 'Lista de filiais',
+                titulo: 'Atualizar filial',
                 formRequest : '',
                 form_errors: {},
-                filiais: [],
+                usuarios: [],
             }
         },
         methods : {
@@ -88,10 +88,10 @@
                     }
                 }])
             },
-            recuperarFiliais : function(){
+            recuperarProduto : function(){              
                 self = this;
-                this.$http.get(urlBase + '/filiais').then((response) => {                   
-                    self.filiais = response.body.filiais;
+                this.$http.get(urlBase + '/usuarios').then((response) => {
+                    self.usuarios = response.body.usuarios;
                 }, response => {                          
                     return Swal({
                         type: 'error',
@@ -102,7 +102,7 @@
             }
         },
         created () {
-            this.recuperarFiliais();
+            this.recuperarProduto();
         },
     };
 </script>

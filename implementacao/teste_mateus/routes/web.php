@@ -38,3 +38,15 @@ Route::group(['prefix' => 'usuarios'], function(){
     Route::get('/cadastrar', 'UsuarioController@cadastro');
     Route::get('/atualizar/{id}', 'UsuarioController@atualizar');    
 });
+
+Route::group(['prefix' => 'produtos'], function(){
+    Route::get('/', 'ProdutoController@listar');
+    Route::get('/cadastrar', 'ProdutoController@cadastro');
+    Route::get('/atualizar/{id}', 'ProdutoController@atualizar');    
+});
+
+Route::group(['prefix' => 'pedido-estoque'], function(){
+    Route::get('/', 'ProdutoController@listar');
+    Route::get('/cadastrar', 'ProdutoController@cadastro');
+    Route::get('/atualizar/{id}', 'ProdutoController@atualizar');    
+});

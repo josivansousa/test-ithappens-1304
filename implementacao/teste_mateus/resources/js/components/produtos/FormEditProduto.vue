@@ -1,55 +1,59 @@
 <template>
-    <div id="lista-filiais">
-        <div class="m-content">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                #
-                            </th>
-                            <th>
-                                Nome
-                            </th>
-                            <th nowrap="true">
-                                CNPJ
-                            </th>
-                            <th nowrap="true" class="text-center">
-                                Opções
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="filial in filiais.data">
-                            <td>{{filial.id}}</td>
-                            <td>{{filial.nome}}</td>
-                            <td>{{filial.cnpj}}</td>
-                            <td style="text-align: center;">
-                                <button class="btn btn-sm btn-danger">
-                                    Excluir
-                                </button>
-                                <button class="btn btn-sm btn-info">
-                                    Editar
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div id="form-edit-filial">
+         <form class="m-form m-form--fit">
+            <div class="m-portlet__body">
+                <div class="m-form__section m-form__section--first">
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-6">
+                            <label>
+                                Nome:
+                            </label>
+                            <input type="text" class="form-control m-input" 
+                                v-model="produto.descricao" 
+                                placeholder="Descrição do produto">
+                            <span class="m-form__help">
+                                Por favor, digite a descrição
+                            </span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>
+                                Produto:
+                            </label>
+                            <input type="text" class="form-control m-input" 
+                                v-model="produto.codigo" 
+                                placeholder="Codigo do produto">
+                            <span class="m-form__help">
+                                Por favor, digite o codigo
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions m-form__actions">
+                    <button type="button" @click="salvar()" class="btn btn-primary">
+                        Salvar
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'lista-filiais',
+        name: 'form-edit-filial',
+    	props : ['id'],
         data () {
             return {
                 urlBase: urlBase,
-                titulo: 'Lista de filiais',
+                titulo: 'Atualizar filial',
                 formRequest : '',
                 form_errors: {},
-                filiais: [],
+                produto: '',
             }
         },
         methods : {
@@ -88,10 +92,10 @@
                     }
                 }])
             },
-            recuperarFiliais : function(){
+            recuperarProduto : function(){
                 self = this;
-                this.$http.get(urlBase + '/filiais').then((response) => {                   
-                    self.filiais = response.body.filiais;
+                this.$http.get(urlBase + '/produtos/recuperar/'+this.id).then((response) => {
+                    self.produto = response.body.produto;
                 }, response => {                          
                     return Swal({
                         type: 'error',
@@ -102,7 +106,7 @@
             }
         },
         created () {
-            this.recuperarFiliais();
+            this.recuperarProduto();
         },
     };
 </script>
