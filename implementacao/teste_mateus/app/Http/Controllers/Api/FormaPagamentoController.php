@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\FormaPagamentoRepositoryInterface;
+use App\Http\Requests\FormaPagamentoFormRequest;
 
 class FormaPagamentoController extends Controller
 {
@@ -39,7 +40,7 @@ class FormaPagamentoController extends Controller
         }
     }
     
-    public function salvar(Request $request)
+    public function salvar(FormaPagamentoFormRequest $request)
     {
         try{
             $formaPagamento = $this->formaPagamento->salvar($request->all());

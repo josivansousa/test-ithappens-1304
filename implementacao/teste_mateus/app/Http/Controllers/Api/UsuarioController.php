@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\UsuarioRepositoryInterface;
+use App\Http\Requests\UsuarioFormRequest;
 
 class UsuarioController extends Controller
 {
@@ -39,7 +40,7 @@ class UsuarioController extends Controller
         }
     }
     
-    public function salvar(Request $request)
+    public function salvar(UsuarioFormRequest $request)
     {
         try{
             $usuario = $this->usuario->salvar($request->all());

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('clientes.listar');
+    return view('produtos.listar');
 });
 
 Route::group(['prefix' => 'clientes'], function(){
