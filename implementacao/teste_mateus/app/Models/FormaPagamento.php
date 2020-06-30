@@ -10,4 +10,6 @@ class FormaPagamento extends Model
     public $fillable = [
         'forma_pagamento',
     ];
+    public $timestamps = false;
+
 }

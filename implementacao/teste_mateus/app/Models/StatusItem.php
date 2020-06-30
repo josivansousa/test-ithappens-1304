@@ -10,4 +10,7 @@ class StatusItem extends Model
     public $fillable = [
         'status_item',
     ];
+
+    public $timestamps = false;
+
 }

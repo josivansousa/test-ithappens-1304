@@ -50,7 +50,6 @@ class ItemPedidoService
         $estoque =  $this->estoqueService->recuperar($pedido->filial_id, $request['produto_id']);
 
         if($pedido->status_pedido_id == 2){
-            // dd(9, !$estoque || ($estoque->qtd_total < $request['qtd']));
             if(!$estoque || ($estoque->qtd_total < $request['qtd'])){
                 throw new \Exception("Produto não disponível!", 422);
             }

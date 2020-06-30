@@ -159,7 +159,7 @@
                                             <label>
                                                 Qtd.:
                                             </label>
-                                            <input type="text" class="form-control m-input" 
+                                            <input type="number" class="form-control m-input" 
                                                 v-model="item.qtd" 
                                                 placeholder="Digite a quantidade">
                                         </div>
@@ -417,7 +417,7 @@
                             
                             if (result.value) {
                                 console.log(self.url);
-                                window.location.assign(self.url);
+                                window.location.assign(self.url+'/pedidos-estoque');
                             }
                         });                            
                     }, response => {                          

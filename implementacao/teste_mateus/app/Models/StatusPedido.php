@@ -10,4 +10,6 @@ class StatusPedido extends Model
     public $fillable = [
         'status_pedido',
     ];
+    public $timestamps = false;
+
 }
