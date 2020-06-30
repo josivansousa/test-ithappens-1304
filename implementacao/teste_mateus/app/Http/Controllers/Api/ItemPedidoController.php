@@ -49,7 +49,7 @@ class ItemPedidoController extends Controller
         }
     }
 
-    public function salvar(Request $request)
+    public function salvar(ItemPedidoFormRequest $request)
     {
         try{
             $itemPedido = $this->itemPedido->salvar($request->all());

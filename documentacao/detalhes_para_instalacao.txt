@@ -1,0 +1,6 @@
+# Com o docker e docker-compose instalado
+
+Rode o comando abaixo
+1 - $ sudo docker-compose up --build -d
+
+3 - Renomei o arquivo .env.example para .env
