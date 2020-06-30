@@ -10,7 +10,8 @@
                          Pedido
                      </a>
                   </li>
-                  <li class="nav-item" v-if="pedido.id">
+                  <!-- v-if="pedido.id" -->
+                  <li class="nav-item" >
                         <a class="nav-link btn btn-primary" data-toggle="pill" href="#event-details">
                             Itens
                         </a>
@@ -163,9 +164,11 @@
                                             <label>
                                                 Valor:
                                             </label>
-                                            <input type="text" class="form-control m-input" 
+                                            <!-- <input type="text" class="form-control m-input" 
                                                 v-model="item.valor_unitario" 
-                                                placeholder="Valor">
+                                                placeholder="Valor"> -->
+                                            <money v-model="item.valor_unitario" v-bind="money" class="form-control m-input"></money>
+
                                         </div>
                                         <div class="col-lg-3">
                                             <label>
@@ -258,6 +261,14 @@
         },
         data () {
             return {
+                money: {
+                    decimal: ',',
+                    thousands: '.',
+                    // prefix: 'R$ ',
+                    // suffix: ' #',
+                    precision: 2,
+                    masked: false
+                },
                 urlPesquisa: urlBase+'/produtos/buscar-produto/',
                 urlBase: urlBase,
                 titulo: 'Cadastrar usuário',

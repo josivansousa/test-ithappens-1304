@@ -8,7 +8,7 @@
     "watchify": "watchify -vd -p browserify-hmr -e resources/js/app.js -o public/js/build.js",
     "serve": "http-server -o -c 1 -a localhost",
     "dev": "npm-run-all --parallel watchify serve",
-    "build-pnae": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o public/css/build.css ] -e resources/js/app.js | uglifyjs -c warnings=false -m > public/js/build.js"
+    "build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o public/css/build.css ] -e resources/js/app.js | uglifyjs -c warnings=false -m > public/js/build.js"
   },
   "browserify": {
     "transform": [

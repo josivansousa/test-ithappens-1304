@@ -17,7 +17,8 @@
                             <label>
                                 CNPJ:
                             </label>
-                            <input type="text" class="form-control m-input" v-model="filial.cnpj" placeholder="CNPJ da filial">
+                            <the-mask :mask="['##.###.###/####-##']" v-model="filial.cnpj" class="form-control m-input"/>
+                            <!-- <input type="text" class="form-control m-input" v-model="filial.cnpj" placeholder="CNPJ da filial"> -->
                             <span class="m-form__help">
                                 Por favor, digite o CNPJ
                             </span>

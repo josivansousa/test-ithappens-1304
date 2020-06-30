@@ -18,7 +18,6 @@ Vue.use(VueTheMask)
 window.moment = moment;
 window.Swal = swal;
 
-
 //Componentes de clientes
 import FormCliente from './components/clientes/FormCliente.vue'
 import FormEditCliente from './components/clientes/FormEditCliente.vue'

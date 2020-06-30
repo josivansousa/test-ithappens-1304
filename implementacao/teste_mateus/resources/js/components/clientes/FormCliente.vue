@@ -15,9 +15,11 @@
                         </div>
                         <div class="col-lg-6">
                             <label>
-                                CPF:
+                                CPF: 
                             </label>
-                            <input type="text" class="form-control m-input" v-model="cliente.cpf" placeholder="CPF do cliente">
+                            <the-mask :mask="['###.###.###-##']" v-model="cliente.cpf" class="form-control m-input"/>
+
+                            <!-- <input type="text" class="form-control m-input" v-model="cliente.cpf" placeholder="CPF do cliente"> -->
                             <span class="m-form__help">
                                 Por favor, digite o CPF
                             </span>
