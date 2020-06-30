@@ -11,7 +11,7 @@
                      </a>
                   </li>
                   <!-- v-if="pedido.id" -->
-                  <li class="nav-item">
+                  <li class="nav-item" v-if="pedido.id">
                         <a class="nav-link btn btn-primary" data-toggle="pill" href="#event-details">
                             Itens
                         </a>
