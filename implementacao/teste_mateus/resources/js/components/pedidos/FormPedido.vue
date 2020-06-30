@@ -11,7 +11,7 @@
                      </a>
                   </li>
                   <!-- v-if="pedido.id" -->
-                  <li class="nav-item" >
+                  <li class="nav-item">
                         <a class="nav-link btn btn-primary" data-toggle="pill" href="#event-details">
                             Itens
                         </a>
@@ -141,8 +141,11 @@
                                                 placeholder="Digite a descrição ou código">
                                                 <br>
 
-                                            <div v-if="itens_pesquisados.length != 0" style="margin-top: 10px;">
+                                            <!-- <div v-if="itens_pesquisados.length != 0" style="margin-top: 10px;"> -->
                                                 <ul style="list-style: none;margin-left: -30px;">
+                                                    <li v-if="itens_pesquisados.length == 0">
+                                                        Produto não encontrado
+                                                    </li>
                                                     <li v-for="(item_pesquisados, key) in itens_pesquisados">
                                                         <a href="javascript:void(0)" @click="selecionarProduto(item_pesquisados)">
                                                             Selecionar
@@ -150,7 +153,7 @@
                                                          - {{item_pesquisados.codigo}} - {{item_pesquisados.descricao}}
                                                     </li>
                                                 </ul>
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                         <div class="col-lg-3">
                                             <label>
@@ -261,6 +264,7 @@
         },
         data () {
             return {
+                url : url,
                 money: {
                     decimal: ',',
                     thousands: '.',
@@ -302,13 +306,17 @@
         methods : {
             salvarPedido : function() {
                 self = this;
-                return self.$http.post(urlBase + '/pedidos-estoque/salvar', self.pedido).then((response) => {
+                if (!self.pedido.id) {
+                    return self.$http.post(urlBase + '/pedidos-estoque/salvar', self.pedido).then((response) => {
                         self.pedido = response.body.pedidoEstoque;
-                        return Swal({
-                            type: 'success',
-                            title: 'Salvo!',
-                            html: 'Pedido salvo. Adicione os itens.',
-                        });                            
+
+                        if (response.body.status == 'erro') {
+                            return Swal({
+                                type: 'eror',
+                                title: 'Erro!',
+                                html: 'Ocorreu um erro ao processar informação!',
+                            });                            
+                        }
                     }, response => {                          
                         var form = response.body;
                         self.formRequest = form;                           
@@ -323,6 +331,8 @@
                             html: msg,
                         });
                     });
+                }
+
                 // Swal.queue([{
                 //     type: 'question',
                 //     showCancelButton: true,
@@ -397,10 +407,18 @@
                     return self.$http.put(urlBase + '/pedidos-estoque/confirmar-pedido/'+self.pedido.id).then((response) => {
                         let produto = self.item;
 
-                        return Swal({
+                        Swal({
                             type: 'success',
                             title: 'Salvo!',
+                            // confirmButtonText: 'Salvar',
                             html: 'Pedido confirmado com sucesso!',
+                        }).then((result) => {
+                            console.log(self.url);
+                            
+                            if (result.value) {
+                                console.log(self.url);
+                                window.location.assign(self.url);
+                            }
                         });                            
                     }, response => {                          
                         var form = response.body;

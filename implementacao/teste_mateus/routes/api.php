@@ -85,6 +85,7 @@ Route::group(['prefix' => 'itens-pedido'], function(){
 
 Route::group(['prefix' => 'estoque'], function(){
     Route::get('/', "Api\EstoqueController@listar");
+    Route::get('/recuperar/{filia_id}/{produto_id}', "Api\EstoqueController@recuperar");
     Route::post('/salvar', "Api\EstoqueController@atualizarEstoque");
 });
 
