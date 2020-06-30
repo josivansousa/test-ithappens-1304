@@ -91,14 +91,9 @@
                                 <td>{{item.id}}</td>
                                 <td>{{item.produtos.descricao}}</td>
                                 <td>{{item.qtd}}</td>
-                                <td>{{item.valor_unitario}}</td>
-                                <td>R$ {{(item.qtd * item.valor_unitario)}}</td>
+                                <td>R$ {{item.valor_unitario | formaMoeda}}</td>
+                                <td>R$ {{(item.qtd * item.valor_unitario) | formaMoeda}}</td>
                                 <td><strong>{{item.status.status_item}}</strong></td>
-                                <!-- <td style="text-align: center;">
-                                    <button class="btn btn-sm btn-info" @click="retiradaItem(item)" v-if="item.status_item_id != 3">
-                                        Retirada
-                                    </button>
-                                </td> -->
                             </tr>
                         </tbody>
                     </table>
