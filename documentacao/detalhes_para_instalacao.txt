@@ -1,6 +1,19 @@
 # Com o docker e docker-compose instalado
 
-Rode o comando abaixo
+Siga as instruções abaixo
+
 1 - $ sudo docker-compose up --build -d
 
+2 - $ sudo docker-compose up -d
+
+3 - $ sudo docker ps
+
+4 - $ sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' CONTAINER_ID_test-mateus-mysql
+
 3 - Renomei o arquivo .env.example para .env
+
+4 - Adicione o IP da saida do comando 4 no .env
+
+5 - $ php artisan key:generate
+
+6 - $ php artisan migrate --seed
