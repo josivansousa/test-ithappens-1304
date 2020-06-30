@@ -25,12 +25,9 @@
                             <td>{{filial.nome}}</td>
                             <td>{{filial.cnpj}}</td>
                             <td style="text-align: center;">
-                                <button class="btn btn-sm btn-danger">
-                                    Excluir
-                                </button>
-                                <button class="btn btn-sm btn-info">
+                                <a :href="url+'/filiais/atualizar/'+filial.id" class="btn btn-sm btn-info">
                                     Editar
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -45,6 +42,7 @@
         name: 'lista-filiais',
         data () {
             return {
+                url : url,
                 urlBase: urlBase,
                 titulo: 'Lista de filiais',
                 formRequest : '',

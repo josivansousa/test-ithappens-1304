@@ -2,7 +2,7 @@
 
 @section("conteudo")
 
-<h1 class="h2">Atualizar cliente</h1>
+<h1 class="h2">Atualizar filial</h1>
 
 <hr>
 

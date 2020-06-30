@@ -25,12 +25,9 @@
                             <td>{{produto.descricao}}</td>
                             <td>{{produto.codigo}}</td>
                             <td style="text-align: center;">
-                                <button class="btn btn-sm btn-danger">
-                                    Excluir
-                                </button>
-                                <button class="btn btn-sm btn-info">
+                                <a :href="url+'/produtos/atualizar/'+produto.id" class="btn btn-sm btn-info">
                                     Editar
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -45,6 +42,7 @@
         name: 'form-edit-filial',
         data () {
             return {
+                url : url,
                 urlBase: urlBase,
                 titulo: 'Atualizar filial',
                 formRequest : '',

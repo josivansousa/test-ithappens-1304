@@ -25,12 +25,9 @@
                             <td>{{usuario.nome}}</td>
                             <td>{{usuario.email}}</td>
                             <td style="text-align: center;">
-                                <button class="btn btn-sm btn-danger">
-                                    Excluir
-                                </button>
-                                <button class="btn btn-sm btn-info">
+                                <a :href="url+'/usuarios/atualizar/'+usuario.id" class="btn btn-sm btn-info">
                                     Editar
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -45,7 +42,7 @@
         name: 'form-edit-filial',
         data () {
             return {
-                urlBase: urlBase,
+                url: url,
                 titulo: 'Atualizar filial',
                 formRequest : '',
                 form_errors: {},

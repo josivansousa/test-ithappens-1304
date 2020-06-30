@@ -21,6 +21,7 @@
     <script>
 
       var urlBase = "{{url('/api')}}";
+      var url = "{{url('/')}}";
     </script>
 
     <style>
